@@ -226,8 +226,8 @@ module FFI
              :c1, :uint8,
              :c2, :uint8,
              :c3, :uint8,
-             :inp_cache, [:uint8, 256],
-             :inp_sess, [:uint8, 64],
+             :inp_cache, [NativeType::UINT8, 256],
+             :inp_sess, [NativeType::UINT8, 64],
              :itab_entry, :pointer
     end
   end
