@@ -11,6 +11,32 @@ Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.
 
 == EXAMPLES:
 
+* Create a new disassembler:
+
+    include FFI::Disas86
+    
+    ud = UD.create(:syntax => :att, :mode => 64)
+
+* Set the input buffer:
+
+    ud.input_buffer = "\x90\x90\xc3"
+
+* Add an input callback:
+
+    ud.input_callback { |ud| ops.shift || -1 }
+
+* Read a file:
+
+    UD.open(path) do |ud|
+      ...
+    end
+
+* Disassemble and print instructions:
+
+    ud.disas do |insn|
+      puts insn
+    end
+
 == INSTALL:
 
   $ sudo gem install udis86-ffi
