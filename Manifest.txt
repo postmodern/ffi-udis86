@@ -5,4 +5,9 @@ README.txt
 lib/udis86.rb
 lib/udis86/ffi.rb
 lib/udis86/typedefs.rb
+lib/udis86/callbacks.rb
+lib/udis86/ud.rb
+lib/udis86/operand.rb
+lib/udis86/operand_value.rb
+lib/udis86/operand_pointer.rb
 lib/udis86/version.rb
