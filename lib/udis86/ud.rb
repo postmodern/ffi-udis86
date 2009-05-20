@@ -260,7 +260,7 @@ module FFI
 
       def self.open(path,options={},&block)
         File.open(path) do |file|
-          ud = self.create(options) { |ud| file.getc }
+          ud = self.create(options) { |ud| file.getc || -1 }
 
           block.call(ud) if block
         end
