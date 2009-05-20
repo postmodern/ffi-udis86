@@ -6,7 +6,7 @@ module FFI
 
     CALLBACKS = []
 
-    callback :ud_input_callback, [], :int
+    callback :ud_input_callback, [:pointer], :int
     callback :ud_translator_callback, [:pointer], :void
 
     def UDis86.create_callback(&block)
