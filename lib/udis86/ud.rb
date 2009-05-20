@@ -241,7 +241,7 @@ module FFI
         ud.init
 
         if options[:string]
-          ud.buffer = options[:string]
+          ud.input_buffer = options[:string]
         end
 
         ud.mode = options[:mode]
@@ -275,11 +275,11 @@ module FFI
         return self
       end
 
-      def buffer
+      def input_buffer
         self[:inp_buff]
       end
 
-      def buffer=(data)
+      def input_buffer=(data)
         data = data.to_s
 
         UDis86.ud_set_input_buffer(self, data, data.length)
