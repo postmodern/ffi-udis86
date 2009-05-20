@@ -260,6 +260,16 @@ module FFI
         return ud
       end
 
+      def self.open(path,options={},&block)
+        File.open(path) do |file|
+          ud = self.create(options) { |ud| file.getc }
+
+          block.call(ud) if block
+        end
+
+        return ud
+      end
+
       def init
         ud_init(self)
         return self
