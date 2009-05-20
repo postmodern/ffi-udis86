@@ -7,6 +7,8 @@ require 'ffi'
 module FFI
   module UDis86
     class UD < FFI::Struct
+
+      include Enumerable
       
       TYPES = [
         NONE = 0,
@@ -338,6 +340,8 @@ module FFI
         UDis86.ud_insn_asm(self)
       end
 
+      alias :to_s :to_asm
+
       def operands
         self[:operand].entries
       end
@@ -356,6 +360,7 @@ module FFI
       end
 
       alias :disas :disassemble
+      alias :each :disassemble
 
     end
   end
