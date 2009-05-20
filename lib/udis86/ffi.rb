@@ -26,23 +26,5 @@ module FFI
     attach_function :ud_insn_ptr, [:pointer], :pointer
     attach_function :ud_insn_asm, [:pointer], :string
     attach_function :ud_input_skip, [:pointer, :size_t], :void
-
-    def UDis86.open(path,&block)
-      ud = UD.new
-      ud_ptr = MemoryPointer.new(ud)
-
-      UDis86.ud_init(ud_ptr)
-
-      File.open(path) do |file|
-        hook = UDis86.create_callback { file.getc }
-
-        UDis86.ud_set_input_hook(ud_ptr,hook)
-
-        block.call(ud) if block
-      end
-
-      return ud
-    end
-
   end
 end

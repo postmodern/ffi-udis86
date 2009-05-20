@@ -234,7 +234,7 @@ module FFI
              :inp_sess, [NativeType::UINT8, 64],
              :itab_entry, :pointer
 
-      def self.create(options={})
+      def self.create(options={},&block)
         options = {:mode => 32, :syntax => :att}.merge(options)
 
         ud = self.new
@@ -255,6 +255,8 @@ module FFI
           ud.pc = options[:pc]
         end
 
+        ud.input_callback(&block) if block
+
         return ud
       end
 
@@ -272,6 +274,16 @@ module FFI
 
         ud_set_input_buffer(self, data, data.length)
         return data
+      end
+
+      def input_callback(&block)
+        if block
+          @input_callback = block
+
+          ud_set_input_hook(self, @input_callback)
+        end
+
+        return @input_callback
       end
 
       def mode

@@ -25,14 +25,7 @@ module FFI
       :intel => :ud_translate_intel
     }
 
-    CALLBACKS = []
-
     callback :ud_input_callback, [:pointer], :int
     callback :ud_translator_callback, [:pointer], :void
-
-    def UDis86.create_callback(&block)
-      CALLBACKS << block
-      return CALLBACKS.last
-    end
   end
 end
