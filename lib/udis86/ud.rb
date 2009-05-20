@@ -234,9 +234,28 @@ module FFI
              :inp_sess, [NativeType::UINT8, 64],
              :itab_entry, :pointer
 
-      def self.create
+      def self.create(options={})
+        options = {:mode => 32, :syntax => :att}.merge(options)
+
         ud = self.new
-        return ud.init
+        ud.init
+
+        if options[:string]
+          ud.buffer = options[:string]
+        end
+
+        ud.mode = options[:mode]
+        ud.syntax = options[:syntax]
+
+        if options[:vendor]
+          ud.vendor = options[:vendor]
+        end
+
+        if options[:pc]
+          ud.pc = options[:pc]
+        end
+
+        return ud
       end
 
       def init
@@ -303,6 +322,11 @@ module FFI
         self[:operand].entries
       end
 
+      def next_insn
+        ud_disassemble(self)
+        return self
+      end
+
       def disassemble(&block)
         until ud_disassemble(self) == 0
           block.call(self) if block
@@ -311,7 +335,7 @@ module FFI
         return self
       end
 
-      alias :disassemble, :disas
+      alias :disas :disassemble
 
     end
   end
