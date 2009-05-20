@@ -8,8 +8,6 @@ module FFI
   module UDis86
     class UD < FFI::Struct
       
-      extend UDis86
-
       TYPES = [
         NONE = 0,
         #
@@ -267,11 +265,11 @@ module FFI
           block.call(ud) if block
         end
 
-        return ud
+        return nil
       end
 
       def init
-        ud_init(self)
+        UDis86.ud_init(self)
         return self
       end
 
@@ -282,7 +280,7 @@ module FFI
       def buffer=(data)
         data = data.to_s
 
-        ud_set_input_buffer(self, data, data.length)
+        UDis86.ud_set_input_buffer(self, data, data.length)
         return data
       end
 
@@ -290,7 +288,7 @@ module FFI
         if block
           @input_callback = block
 
-          ud_set_input_hook(self, @input_callback)
+          UDis86.ud_set_input_hook(self, @input_callback)
         end
 
         return @input_callback
@@ -301,7 +299,7 @@ module FFI
       end
 
       def mode=(new_mode)
-        ud_set_mode(self, new_mode)
+        UDis86.ud_set_mode(self, new_mode)
         return self
       end
 
@@ -313,7 +311,7 @@ module FFI
           raise(ArgumentError,"unknown syntax name #{new_syntax}",caller)
         end
 
-        ud_set_syntax(self, method(func_name))
+        UDis86.ud_set_syntax(self, UDis86.method(func_name))
         return new_syntax
       end
 
@@ -322,22 +320,22 @@ module FFI
       end
 
       def vendor=(new_vendor)
-        ud_set_vendor(self, new_vendor)
+        UDis86.ud_set_vendor(self, new_vendor)
         return new_vendor
       end
 
       def pc=(new_pc)
-        ud_set_pc(self, new_pc)
+        UDis86.ud_set_pc(self, new_pc)
         return new_pc
       end
 
       def skip(n)
-        ud_input_skip(self, n)
+        UDis86.ud_input_skip(self, n)
         return self
       end
 
       def to_asm
-        ud_insn_asm(self)
+        UDis86.ud_insn_asm(self)
       end
 
       def operands
@@ -345,12 +343,12 @@ module FFI
       end
 
       def next_insn
-        ud_disassemble(self)
+        UDis86.ud_disassemble(self)
         return self
       end
 
       def disassemble(&block)
-        until ud_disassemble(self) == 0
+        until UDis86.ud_disassemble(self) == 0
           block.call(self) if block
         end
 
