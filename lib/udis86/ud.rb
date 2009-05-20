@@ -1,5 +1,7 @@
+require 'udis86/callbacks'
 require 'udis86/operand'
-require 'udis86/ffi'
+
+require 'ffi'
 
 module FFI
   module UDis86
