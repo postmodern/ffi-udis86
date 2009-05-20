@@ -1,4 +1,5 @@
 require 'udis86/typedefs'
+require 'udis86/callbacks'
 require 'udis86/ud'
 
 require 'ffi'
@@ -8,11 +9,6 @@ module FFI
     extend FFI::Library
 
     ffi_lib 'libudis86'
-
-    CALLBACKS = []
-
-    callback :ud_input_callback, [], :int
-    callback :ud_translator_callback, [:pointer], :void
 
     attach_function :ud_init, [:pointer], :void
     attach_function :ud_set_input_hook, [:pointer, :ud_input_callback], :void
@@ -40,11 +36,6 @@ module FFI
     attach_function :ud_insn_ptr, [:pointer], :pointer
     attach_function :ud_insn_asm, [:pointer], :string
     attach_function :ud_input_skip, [:pointer, :size_t], :void
-
-    def UDis86.create_callback(&block)
-      CALLBACKS << block
-      return CALLBACKS.last
-    end
 
     def UDis86.open(path,&block)
       ud = UD.new
