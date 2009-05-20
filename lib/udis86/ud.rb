@@ -1,11 +1,15 @@
-require 'udis86/callbacks'
+require 'udis86/types'
 require 'udis86/operand'
+require 'udis86/ffi'
 
 require 'ffi'
 
 module FFI
   module UDis86
     class UD < FFI::Struct
+      
+      extend UDis86
+
       TYPES = [
         NONE = 0,
         #
@@ -229,6 +233,65 @@ module FFI
              :inp_cache, [NativeType::UINT8, 256],
              :inp_sess, [NativeType::UINT8, 64],
              :itab_entry, :pointer
+
+      def self.create
+        ud = self.new
+        return ud.init
+      end
+
+      def init
+        ud_init(self)
+        return self
+      end
+
+      def mode
+        self[:dis_mode]
+      end
+
+      def mode=(new_mode)
+        ud_set_mode(self, new_mode)
+        return self
+      end
+
+      def syntax=(new_syntax)
+        new_syntax = new_syntax.to_s
+        func_name = UDis86::SYNTAX[new_syntax.downcase.to_sym]
+
+        unless func_name
+          raise(ArgumentError,"unknown syntax name #{new_syntax}",caller)
+        end
+
+        ud_set_syntax(self, method(func_name))
+        return new_syntax
+      end
+
+      def vendor
+        self[:vendor]
+      end
+
+      def vendor=(new_vendor)
+        ud_set_vendor(self, new_vendor)
+        return new_vendor
+      end
+
+      def pc=(new_pc)
+        ud_set_pc(self, new_pc)
+        return new_pc
+      end
+
+      def skip(n)
+        ud_input_skip(self, n)
+        return self
+      end
+
+      def to_asm
+        ud_insn_asm(self)
+      end
+
+      def operands
+        self[:operand].entries
+      end
+
     end
   end
 end
