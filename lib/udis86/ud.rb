@@ -244,6 +244,17 @@ module FFI
         return self
       end
 
+      def buffer
+        self[:inp_buff]
+      end
+
+      def buffer=(data)
+        data = data.to_s
+
+        ud_set_input_buffer(self, data, data.length)
+        return data
+      end
+
       def mode
         self[:dis_mode]
       end
@@ -291,6 +302,16 @@ module FFI
       def operands
         self[:operand].entries
       end
+
+      def disassemble(&block)
+        until ud_disassemble(self) == 0
+          block.call(self) if block
+        end
+
+        return self
+      end
+
+      alias :disassemble, :disas
 
     end
   end
