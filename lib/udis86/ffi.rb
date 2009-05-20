@@ -1,5 +1,5 @@
 require 'udis86/typedefs'
-require 'udis86/callbacks'
+require 'udis86/types'
 require 'udis86/ud'
 
 require 'ffi'
@@ -13,21 +13,9 @@ module FFI
     attach_function :ud_init, [:pointer], :void
     attach_function :ud_set_input_hook, [:pointer, :ud_input_callback], :void
     attach_function :ud_set_input_buffer, [:pointer, :pointer, :size_t], :void
-
-    MODE_32 = 32
-    MODE_64 = 64
-
     attach_function :ud_set_mode, [:pointer, :uint8], :void
     attach_function :ud_set_pc, [:pointer], :void
-
-    SYNTAX_INTEL = 0
-    SYNTAX_ATT = 1
-
     attach_function :ud_set_syntax, [:pointer, :ud_translator_callback], :void
-
-    VENDOR_INTEL = 0
-    VENDOR_ATT = 1
-
     attach_function :ud_set_vendor, [:pointer, :uint], :void
     attach_function :ud_disassemble, [:pointer], :uint
     attach_function :ud_insn_len, [:pointer], :uint
