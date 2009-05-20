@@ -7,7 +7,7 @@ module FFI
   module UDis86
     extend FFI::Library
 
-    ffi_lib 'udis86'
+    ffi_lib 'libudis86'
 
     CALLBACKS = []
 
