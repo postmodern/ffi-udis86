@@ -13,7 +13,7 @@ Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.
 
 * Create a new disassembler:
 
-    include FFI::Disas86
+    include FFI::UDis86
     
     ud = UD.create(:syntax => :att, :mode => 64)
 
