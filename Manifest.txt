@@ -1,0 +1,8 @@
+History.txt
+Manifest.txt
+Rakefile
+README.txt
+lib/udis86.rb
+lib/udis86/ffi.rb
+lib/udis86/typedefs.rb
+lib/udis86/version.rb
