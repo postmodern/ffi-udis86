@@ -17,6 +17,10 @@ module FFI
     attach_function :ud_init, [:pointer], :void
     attach_function :ud_set_input_hook, [:pointer, :ud_input_callback], :void
     attach_function :ud_set_input_buffer, [:pointer, :pointer, :size_t], :void
+
+    MODE_32 = 32
+    MODE_64 = 64
+
     attach_function :ud_set_mode, [:pointer, :uint8], :void
     attach_function :ud_set_pc, [:pointer], :void
 
