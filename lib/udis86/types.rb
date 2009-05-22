@@ -10,7 +10,7 @@ module FFI
       :ud_mode_64, 64
     ]
 
-    enum :ud_vendors, [:amd, :intel]
+    enum :ud_vendor, [:amd, :intel]
 
     enum :ud_type, [
       :ud_none,
