@@ -25,7 +25,7 @@ module FFI
              :insn_fill, :uint,
              :dis_mode, :uint8,
              :pc, :uint64,
-             :vendor, :uint8,
+             :vendor, :ud_vendor,
              :mapen, :pointer,
              :mnemonic, :uint,
              :operand, [Operand, 3],
