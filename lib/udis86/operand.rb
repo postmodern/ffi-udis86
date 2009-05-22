@@ -6,7 +6,7 @@ module FFI
   module UDis86
     class Operand < FFI::Struct
 
-      layout :ud_type, :uint,
+      layout :type, :ud_type,
              :size, :uint8,
              :value, OperandValue,
              :base, :uint,
