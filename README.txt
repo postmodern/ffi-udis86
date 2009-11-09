@@ -1,6 +1,6 @@
-= udis86-ffi
+= ffi-udis86
 
-* http://github.com/sophsec/udis86-ffi/
+* http://github.com/sophsec/ffi-udis86/
 * Postmodern (postmodern.mod3 at gmail.com)
 
 == DESCRIPTION:
@@ -39,7 +39,7 @@ Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.
 
 == INSTALL:
 
-  $ sudo gem install udis86-ffi
+  $ sudo gem install ffi-udis86
 
 == LICENSE:
 
