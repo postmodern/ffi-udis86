@@ -37,6 +37,11 @@ Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.
       puts insn
     end
 
+== REQUIREMENTS:
+
+* {udis86}[http://udis86.sourceforge.net/] >= 1.7
+* {ffi}[http://github.com/ffi/ffi] >= 0.4.0
+
 == INSTALL:
 
   $ sudo gem install ffi-udis86
