@@ -1,3 +1,4 @@
+require 'udis86/typedefs'
 require 'udis86/types'
 require 'udis86/operand'
 require 'udis86/ffi'
@@ -9,7 +10,7 @@ module FFI
     class UD < FFI::Struct
 
       include Enumerable
-      
+
       layout :inp_hook, :ud_input_callback,
              :inp_curr, :uint8,
              :inp_fill, :uint8,
