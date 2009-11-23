@@ -188,7 +188,7 @@ module FFI
       def input_buffer=(data)
         data = data.to_s
 
-        UDis86.ud_set_input_buffer(self, data, data.length)
+        UDis86.ud_set_input_buffer(self,data,data.length)
         return data
       end
 
@@ -207,7 +207,7 @@ module FFI
         if block
           @input_callback = block
 
-          UDis86.ud_set_input_hook(self, @input_callback)
+          UDis86.ud_set_input_hook(self,@input_callback)
         end
 
         return @input_callback
@@ -233,7 +233,7 @@ module FFI
       #   The new mode of the disassembler.
       #
       def mode=(new_mode)
-        UDis86.ud_set_mode(self, new_mode)
+        UDis86.ud_set_mode(self,new_mode)
         return new_mode
       end
 
@@ -255,7 +255,7 @@ module FFI
           raise(ArgumentError,"unknown syntax name #{new_syntax}",caller)
         end
 
-        UDis86.ud_set_syntax(self, UDis86.method(func_name))
+        UDis86.ud_set_syntax(self,UDis86.method(func_name))
         return new_syntax
       end
 
@@ -281,7 +281,7 @@ module FFI
       #   The new vendor to use.
       #
       def vendor=(new_vendor)
-        UDis86.ud_set_vendor(self, new_vendor)
+        UDis86.ud_set_vendor(self,new_vendor)
         return new_vendor
       end
 
@@ -295,7 +295,7 @@ module FFI
       #   The new value of the PC.
       #
       def pc=(new_pc)
-        UDis86.ud_set_pc(self, new_pc)
+        UDis86.ud_set_pc(self,new_pc)
         return new_pc
       end
 
@@ -310,7 +310,7 @@ module FFI
       #   The disassembler.
       #
       def skip(n)
-        UDis86.ud_input_skip(self, n)
+        UDis86.ud_input_skip(self,n)
         return self
       end
 
