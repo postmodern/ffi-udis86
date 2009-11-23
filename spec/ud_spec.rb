@@ -38,15 +38,19 @@ describe UD do
 
       ud = UD.create { |ud| bytes.shift }
 
-      ud.next_insn
+      ud.next_insn.should == 1
       ud.to_hex.should == '80'
+
+      ud.next_insn.should == 0
     end
   end
 
   it "should be able to open files" do
     UD.open(File.join(Helpers::FILES_DIR,'simple.o')) do |ud|
-      ud.next_insn
+      ud.next_insn.should == 1
       ud.to_hex.should == '90'
+
+      ud.next_insn.should == 0
     end
   end
 end
