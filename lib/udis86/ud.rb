@@ -348,6 +348,27 @@ module FFI
       end
 
       #
+      # Returns the number of bytes that were disassembled.
+      #
+      # @return [Integer]
+      #   The number of bytes disassembled.
+      #
+      def insn_length
+        UDis86.ud_insn_len(self)
+      end
+
+      #
+      # Returns the starting offset of the disassembled instruction
+      # relative to the initial value of the Program Counter (PC).
+      #
+      # @return [Integer]
+      #   The offset of the instruction.
+      #
+      def insn_offset
+        UDis86.ud_insn_off(self)
+      end
+
+      #
       # Reads each byte, disassembling each instruction.
       #
       # @yield [ud]
