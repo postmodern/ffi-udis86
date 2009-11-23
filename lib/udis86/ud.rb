@@ -229,12 +229,12 @@ module FFI
       # @param [Integer] new_mode
       #   The mode the disassembler will run in. Can be either 16, 32 or 64.
       #
-      # @return [UD]
-      #   The disassembler.
+      # @return [Integer]
+      #   The new mode of the disassembler.
       #
       def mode=(new_mode)
         UDis86.ud_set_mode(self, new_mode)
-        return self
+        return new_mode
       end
 
       #
