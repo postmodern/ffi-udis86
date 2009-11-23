@@ -205,9 +205,7 @@ module FFI
       #
       def input_callback(&block)
         if block
-          @input_callback = Proc.new do |ptr|
-            block.call(self)
-          end
+          @input_callback = Proc.new { |ptr| block.call(self) }
 
           UDis86.ud_set_input_hook(self,@input_callback)
         end
