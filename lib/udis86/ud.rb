@@ -366,7 +366,6 @@ module FFI
       #
       def next_insn
         UDis86.ud_disassemble(self)
-        return self
       end
 
       #
