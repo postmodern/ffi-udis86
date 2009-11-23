@@ -248,8 +248,8 @@ module FFI
       #   The new assembly syntax being used.
       #
       def syntax=(new_syntax)
-        new_syntax = new_syntax.to_s
-        func_name = UDis86::SYNTAX[new_syntax.downcase.to_sym]
+        new_syntax = new_syntax.to_s.downcase.to_sym
+        func_name = UDis86::SYNTAX[new_syntax]
 
         unless func_name
           raise(ArgumentError,"unknown syntax name #{new_syntax}",caller)
