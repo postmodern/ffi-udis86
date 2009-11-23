@@ -42,7 +42,7 @@ module FFI
       #   The value of the operand.
       #
       def value
-        self[:value[
+        self[:value]
       end
 
       #
