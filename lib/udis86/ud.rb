@@ -324,6 +324,17 @@ module FFI
         UDis86.ud_insn_asm(self)
       end
 
+      #
+      # Returns the hexadecimal representation of the disassembled
+      # instruction.
+      #
+      # @return [String]
+      #   The hexadecimal form of the disassembled instruction.
+      #
+      def to_hex
+        UDis86.ud_insn_hex(self)
+      end
+
       alias :to_s :to_asm
 
       #
