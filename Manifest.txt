@@ -13,5 +13,8 @@ lib/udis86/version.rb
 tasks/spec.rb
 tasks/yard.rb
 spec/spec_helper.rb
+spec/helpers/files.rb
+spec/helpers/files/simple.s
+spec/helpers/files/simple.o
 spec/ud_spec.rb
 spec/udis86_spec.rb

@@ -1,8 +1,11 @@
 require 'udis86/ud'
 
 require 'spec_helper'
+require 'helpers/files'
 
 describe UD do
+  include Helpers
+
   describe "create" do
     it "should accept a :mode option" do
       ud = UD.create(:mode => 16)
@@ -28,6 +31,22 @@ describe UD do
     it "should accept a :string option" do
       ud = UD.create(:string => "\x90\x90\x90")
       ud.input_buffer.should == "\x90\x90\x90"
+    end
+
+    it "should accept a block as an input callback" do
+      bytes = [0x80, -1]
+
+      ud = UD.create { |ud| bytes.shift }
+
+      ud.next_insn
+      ud.to_hex.should == '80'
+    end
+  end
+
+  it "should be able to open files" do
+    UD.open(File.join(Helpers::FILES_DIR,'simple.o')) do |ud|
+      ud.next_insn
+      ud.to_hex.should == '90'
     end
   end
 end
