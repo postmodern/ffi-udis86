@@ -40,7 +40,7 @@ Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.
 == REQUIREMENTS:
 
 * {udis86}[http://udis86.sourceforge.net/] >= 1.7
-* {ffi}[http://github.com/ffi/ffi] >= 0.4.0
+* {ffi}[http://github.com/ffi/ffi] >= 0.5.3
 
 == INSTALL:
 
