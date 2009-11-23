@@ -287,6 +287,16 @@ module FFI
       end
 
       #
+      # Returns the current value of the Program Counter (PC).
+      #
+      # @return [Integer]
+      #   The value of the PC.
+      #
+      def pc
+        self[:pc]
+      end
+
+      #
       # Sets the value of the Program Counter (PC).
       #
       # @param [Integer] new_pc
