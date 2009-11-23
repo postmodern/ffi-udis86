@@ -14,6 +14,35 @@ module FFI
              :offset, :uint8,
              :scale, :uint8
 
+
+      def type
+        self[:type]
+      end
+
+      def size
+        self[:size]
+      end
+
+      def value
+        self[:value[
+      end
+
+      def base
+        self[:base]
+      end
+
+      def index
+        self[:index]
+      end
+
+      def offset
+        self[:offset]
+      end
+
+      def scale
+        self[:scale]
+      end
+
     end
   end
 end
