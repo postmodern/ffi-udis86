@@ -380,6 +380,17 @@ module FFI
       end
 
       #
+      # Returns the pointer to the buffer holding the disassembled
+      # instruction bytes.
+      #
+      # @return [FFI::Pointer]
+      #   The pointer to the instruction buffer.
+      #
+      def insn_ptr
+        UDis86.ud_insn_ptr(self)
+      end
+
+      #
       # Reads each byte, disassembling each instruction.
       #
       # @yield [ud]
