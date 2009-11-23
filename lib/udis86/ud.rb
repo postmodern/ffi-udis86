@@ -327,7 +327,7 @@ module FFI
       alias :to_s :to_asm
 
       #
-      # Returns the operands for the last diassembled instruction.
+      # Returns the operands for the last disassembled instruction.
       #
       # @return [Array<Operand>]
       #   The operands of the instruction.
@@ -351,7 +351,7 @@ module FFI
       # Reads each byte, disassembling each instruction.
       #
       # @yield [ud]
-      #   If a block is given, it will be passed the diassembler after
+      #   If a block is given, it will be passed the disassembler after
       #   each instruction has been disassembled.
       #
       # @yieldparam [UD] ud
