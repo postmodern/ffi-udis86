@@ -4,8 +4,8 @@ module FFI
   module UDis86
     class OperandPointer < FFI::Struct
 
-      layout :seg, :uint16,
-             :off, :uint32
+      layout :segment, :uint16,
+             :offset, :uint32
 
       #
       # Returns the pointer segment.
@@ -13,11 +13,11 @@ module FFI
       # @return [Integer]
       #   The pointer segment.
       #
-      def seg
-        self[:seg]
+      def segment
+        self[:segment]
       end
 
-      alias segment seg
+      alias seg segment
 
       #
       # Returns the offset within the segment of the pointer.
@@ -25,11 +25,11 @@ module FFI
       # @return [Integer]
       #   The offset within the segment.
       #
-      def off
-        self[:off]
+      def offset
+        self[:offset]
       end
 
-      alias offset off
+      alias off offset
 
     end
   end
