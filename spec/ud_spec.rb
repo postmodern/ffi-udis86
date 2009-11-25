@@ -51,6 +51,12 @@ describe UD do
         ud.next_insn.should == 1
         ud.to_hex.should == '90'
 
+        ud.next_insn.should == 1
+        ud.to_hex.should == '90'
+
+        ud.next_insn.should == 1
+        ud.to_hex.should == 'c3'
+
         ud.next_insn.should == 0
       end
     end
@@ -58,7 +64,7 @@ describe UD do
 
   describe "disassember" do
     before(:each) do
-      @string = "\x90\x90\xc3"
+      @string = File.read(File.join(Helpers::FILES_DIR,'simple.o'))
       @ud = UD.create(:string => @string)
     end
 
