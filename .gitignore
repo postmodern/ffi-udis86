@@ -3,5 +3,6 @@ pkg
 tmp/*
 .DS_Store
 .yardoc
+*.o
 *.swp
 *~
