@@ -62,6 +62,30 @@ describe UD do
       @ud = UD.create(:string => @string)
     end
 
+    it "should allow setting the mode" do
+      @ud.mode = 64
+
+      @ud.mode.should == 64
+    end
+
+    it "should allow setting the syntax" do
+      lambda {
+        @ud.syntax = :att
+      }.should_not raise_error(RuntimeError)
+    end
+
+    it "should allow setting the vendor" do
+      @ud.vendor = :amd
+
+      @ud.vendor.should == :amd
+    end
+
+    it "should allow setting the program counter (PC)" do
+      @ud.pc = 0x400000
+
+      @ud.pc.should == 0x400000
+    end
+
     it "should provide read access to the input buffer" do
       @ud.input_buffer.should == @string
     end
@@ -96,6 +120,37 @@ describe UD do
       @ud.to_asm.should == 'ret '
     end
 
+    it "should get the next instruction" do
+      @ud.next_insn.should == 1
+      @ud.to_asm.should == 'nop '
+
+      @ud.next_insn.should == 1
+      @ud.to_asm.should == 'nop '
+
+      @ud.next_insn.should == 1
+      @ud.to_asm.should == 'ret '
+
+      @ud.next_insn.should == 0
+    end
+
+    it "should specify the instruction length" do
+      @ud.next_insn.should == 1
+      @ud.insn_length.should == 1
+    end
+
+    it "should specify the instruction offset" do
+      @ud.next_insn.should == 1
+      @ud.next_insn.should == 1
+
+      @ud.insn_offset.should == 1
+    end
+
+    it "should provide a pointer to the instruction bytes" do
+      @ud.next_insn.should == 1
+
+      @ud.insn_ptr.get_string(0).should == "\x90"
+    end
+
     it "should provide hex form of the bytes" do
       @ud.next_insn.should == 1
       @ud.to_hex.should == '90'
@@ -104,6 +159,14 @@ describe UD do
     it "should provide the assembly form of the disassembled instructions" do
       @ud.next_insn.should == 1
       @ud.to_asm.should == 'nop '
+    end
+
+    it "should disassemble every byte" do
+      ops = ['nop ', 'nop ', 'ret ']
+
+      @ud.disassemble do |ud|
+        ud.to_asm.should == ops.shift
+      end
     end
   end
 end
