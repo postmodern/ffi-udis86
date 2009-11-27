@@ -3,6 +3,7 @@ Manifest.txt
 Rakefile
 README.txt
 lib/udis86.rb
+lib/udis86/types.rb
 lib/udis86/ffi.rb
 lib/udis86/ud.rb
 lib/udis86/operand.rb
