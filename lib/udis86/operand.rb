@@ -16,7 +16,7 @@ module FFI
              :scale, :uint8
 
       #
-      # Returns the type of the operand.
+      # The type of the operand.
       #
       # @return [Integer]
       #   The type of the operand.
@@ -26,7 +26,7 @@ module FFI
       end
 
       #
-      # Returns the size of the operand.
+      # The size of the operand.
       #
       # @return [Integer]
       #   The size of the operand in bytes.
@@ -54,7 +54,7 @@ module FFI
       end
 
       #
-      # Returns the base address used by the operand.
+      # The base address used by the operand.
       #
       # @return [Integer]
       #   The base address of the operand.
@@ -66,7 +66,7 @@ module FFI
       alias reg base
 
       #
-      # Returns the index value used by the operand.
+      # The index value used by the operand.
       #
       # @return [Integer]
       #   The index value of the operand.
@@ -76,7 +76,7 @@ module FFI
       end
 
       #
-      # Returns the offset value used by the operand.
+      # The offset value used by the operand.
       #
       # @return [OperandValue, 0]
       #   The offset value of the operand.
@@ -90,7 +90,7 @@ module FFI
       end
 
       #
-      # Returns the word-length of the offset used with the operand.
+      # The word-length of the offset used with the operand.
       #
       # @return [Integer]
       #   Word-length of the offset being used.
@@ -100,7 +100,7 @@ module FFI
       end
 
       #
-      # Returns the scale value used by the operand.
+      # The scale value used by the operand.
       #
       # @return [Integer]
       #   The scale value of the operand.
