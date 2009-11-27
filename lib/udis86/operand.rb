@@ -1,4 +1,5 @@
 require 'udis86/operand_value'
+require 'udis86/types'
 
 require 'ffi'
 
@@ -57,7 +58,7 @@ module FFI
       #   The base address of the operand.
       #
       def base
-        self[:base]
+        REGS[self[:base]]
       end
 
       #
@@ -67,7 +68,7 @@ module FFI
       #   The index value of the operand.
       #
       def index
-        self[:index]
+        REGS[self[:index]]
       end
 
       #
@@ -102,6 +103,17 @@ module FFI
       #
       def scale
         self[:scale]
+      end
+
+      #
+      # Returns the register name of the operand.
+      #
+      # @return [Symbol, nil]
+      #   Returns the register name as a Symbol, or +nil+ if the operand
+      #   is not a register.
+      #
+      def reg
+        REGS[type]
       end
 
     end
