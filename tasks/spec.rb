@@ -23,10 +23,12 @@ namespace :spec do
 
     yasm_file 'spec/helpers/files/simple.s'
     yasm_file 'spec/helpers/files/operands_simple.s'
+    yasm_file 'spec/helpers/files/operands_pointer.s'
 
     task :files => [
       'spec/helpers/files/simple.o',
-      'spec/helpers/files/operands_simple.o'
+      'spec/helpers/files/operands_simple.o',
+      'spec/helpers/files/operands_pointer.o'
     ]
   end
 end
