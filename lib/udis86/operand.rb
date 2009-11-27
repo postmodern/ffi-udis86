@@ -63,6 +63,8 @@ module FFI
         REGS[self[:base]]
       end
 
+      alias reg base
+
       #
       # Returns the index value used by the operand.
       #
@@ -105,17 +107,6 @@ module FFI
       #
       def scale
         self[:scale]
-      end
-
-      #
-      # Returns the register name of the operand.
-      #
-      # @return [Symbol, nil]
-      #   Returns the register name as a Symbol, or +nil+ if the operand
-      #   is not a register.
-      #
-      def reg
-        REGS[self[:type]]
       end
 
     end
