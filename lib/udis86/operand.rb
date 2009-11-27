@@ -45,9 +45,11 @@ module FFI
       def value
         case type
         when :ud_op_ptr
-          self[:value].ptr
+          return self[:value].ptr
+        when :ud_op_reg
+          return nil
         else
-          self[:value]
+          return self[:value]
         end
       end
 
