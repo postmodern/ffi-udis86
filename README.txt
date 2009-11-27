@@ -9,6 +9,12 @@ Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.
 
 == FEATURES:
 
+* Supports x86 and x86-64 instructions.
+* Supports 16 and 32 disassembly modes.
+* Supports Intel and ATT syntax output.
+* Supports disassembling files and arbitrary input.
+* Supports input callbacks.
+
 == EXAMPLES:
 
 * Create a new disassembler:
