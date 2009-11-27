@@ -16,5 +16,6 @@ spec/spec_helper.rb
 spec/helpers/files.rb
 spec/helpers/files/simple.s
 spec/helpers/files/operands_simple.s
+spec/helpers/operands.rb
 spec/ud_spec.rb
 spec/udis86_spec.rb
