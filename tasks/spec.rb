@@ -12,7 +12,7 @@ task :default => :spec
 namespace :spec do
   namespace :helpers do
     def yasm(src,dest)
-      sh "yasm -p gas #{src} -o #{dest}"
+      sh "yasm -p gas -a x86 -m x86 #{src} -o #{dest}"
     end
 
     def yasm_file(src,dest=src.gsub(/\.s$/,'.o'))
@@ -23,12 +23,12 @@ namespace :spec do
 
     yasm_file 'spec/helpers/files/simple.s'
     yasm_file 'spec/helpers/files/operands_simple.s'
-    yasm_file 'spec/helpers/files/operands_pointer.s'
+    yasm_file 'spec/helpers/files/operands_memory.s'
 
     task :files => [
       'spec/helpers/files/simple.o',
       'spec/helpers/files/operands_simple.o',
-      'spec/helpers/files/operands_pointer.o'
+      'spec/helpers/files/operands_memory.o'
     ]
   end
 end
