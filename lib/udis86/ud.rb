@@ -1,4 +1,3 @@
-require 'udis86/typedefs'
 require 'udis86/types'
 require 'udis86/operand'
 require 'udis86/ffi'

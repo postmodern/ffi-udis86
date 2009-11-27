@@ -4,6 +4,8 @@ module FFI
   module UDis86
     extend FFI::Library
 
+    typedef :uint, :size_t
+
     enum :ud_mode, [
       :ud_mode_16, 16,
       :ud_mode_32, 32,
