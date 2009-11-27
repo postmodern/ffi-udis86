@@ -9,8 +9,8 @@ module FFI
       layout :type, :ud_type,
              :size, :uint8,
              :value, OperandValue,
-             :base, :uint,
-             :index, :uint,
+             :base, :ud_type,
+             :index, :ud_type,
              :offset, :uint8,
              :scale, :uint8
 
