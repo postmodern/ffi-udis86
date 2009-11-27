@@ -115,7 +115,7 @@ module FFI
       #   is not a register.
       #
       def reg
-        REGS[type]
+        REGS[self[:type]]
       end
 
     end
