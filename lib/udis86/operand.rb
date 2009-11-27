@@ -14,7 +14,6 @@ module FFI
              :offset, :uint8,
              :scale, :uint8
 
-
       #
       # Returns the type of the operand.
       #
