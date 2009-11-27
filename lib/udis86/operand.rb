@@ -38,11 +38,17 @@ module FFI
       #
       # The value of the operand.
       #
-      # @return [OperandValue]
-      #   The value of the operand.
+      # @return [OperandValue, OperandPointer]
+      #   The value of the operand. If the operand represents a pointer,
+      #   an OperandPointer object will be returned.
       #
       def value
-        self[:value]
+        case type
+        when :ud_op_ptr
+          self[:value].ptr
+        else
+          self[:value]
+        end
       end
 
       #
