@@ -355,7 +355,16 @@ module FFI
       #   The operands of the instruction.
       #
       def operands
-        self[:operand].entries
+        self[:operand].entries.select do |operand|
+          [
+            :ud_op_reg,
+            :ud_op_mem,
+            :ud_op_ptr,
+            :ud_op_imm,
+            :ud_op_jimm,
+            :ud_op_const
+          ].include?(operand.type)
+        end
       end
 
       #

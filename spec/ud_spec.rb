@@ -167,6 +167,11 @@ describe UD do
       @ud.to_asm.should == 'nop '
     end
 
+    it "should provide the disassembled operands of the instruction" do
+      @ud.next_insn.should == 1
+      @ud.operands.should == []
+    end
+
     it "should disassemble every byte" do
       ops = ['nop ', 'nop ', 'ret ']
 
