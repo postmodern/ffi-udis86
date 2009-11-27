@@ -129,6 +129,8 @@ module FFI
 
       alias pointer ptr
 
+      alias to_i signed_quad_word
+
     end
   end
 end
