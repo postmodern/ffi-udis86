@@ -26,6 +26,7 @@ module FFI
         self[:sbyte]
       end
 
+      alias char sbyte
       alias signed_byte sbyte
 
       #
@@ -38,6 +39,7 @@ module FFI
         self[:ubyte]
       end
 
+      alias byte ubyte
       alias unsigned_byte ubyte
 
       #
@@ -62,6 +64,7 @@ module FFI
         self[:uword]
       end
 
+      alias word uword
       alias unsigned_word uword
 
       #
@@ -86,6 +89,7 @@ module FFI
         self[:udword]
       end
 
+      alias double_word udword
       alias unsigned_double_word udword
 
       #
@@ -110,6 +114,7 @@ module FFI
         self[:uqword]
       end
 
+      alias quad_word uqword
       alias unsigned_quad_word uqword
 
       #
