@@ -8,29 +8,3 @@ end
 
 task :test => :spec
 task :default => :spec
-
-namespace :spec do
-  namespace :helpers do
-    def yasm(src,dest)
-      sh "yasm -p gas -a x86 -m x86 #{src} -o #{dest}"
-    end
-
-    def yasm_file(src,dest=src.gsub(/\.s$/,'.o'))
-      file dest => [src] do
-        yasm(src,dest)
-      end
-    end
-
-    yasm_file 'spec/helpers/files/simple.s'
-    yasm_file 'spec/helpers/files/operands_simple.s'
-    yasm_file 'spec/helpers/files/operands_memory.s'
-
-    task :files => [
-      'spec/helpers/files/simple.o',
-      'spec/helpers/files/operands_simple.o',
-      'spec/helpers/files/operands_memory.o'
-    ]
-  end
-end
-
-task :spec => ['spec:helpers:files']

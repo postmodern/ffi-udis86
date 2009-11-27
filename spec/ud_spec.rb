@@ -47,7 +47,7 @@ describe UD do
 
   describe "open" do
     it "should be able to open files" do
-      UD.open(File.join(Helpers::FILES_DIR,'simple.o')) do |ud|
+      UD.open(File.join(Helpers::FILES_DIR,'simple')) do |ud|
         ud.next_insn.should == 1
         ud.to_hex.should == '90'
 
@@ -64,7 +64,7 @@ describe UD do
 
   describe "disassember" do
     before(:each) do
-      @string = File.read(File.join(Helpers::FILES_DIR,'simple.o'))
+      @string = File.read(File.join(Helpers::FILES_DIR,'simple'))
       @ud = UD.create(:string => @string)
     end
 
