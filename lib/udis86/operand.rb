@@ -74,10 +74,24 @@ module FFI
       #
       # Returns the offset value used by the operand.
       #
-      # @return [Integer]
+      # @return [OperandValue, 0]
       #   The offset value of the operand.
       #
       def offset
+        if self[:offset] > 0
+          return self[:value]
+        else
+          return 0
+        end
+      end
+
+      #
+      # Returns the word-length of the offset used with the operand.
+      #
+      # @return [Integer]
+      #   Word-length of the offset being used.
+      #
+      def offset_size
         self[:offset]
       end
 
