@@ -2,7 +2,8 @@
 
 require 'rubygems'
 require 'hoe'
-require './tasks/yard.rb'
+
+Hoe.plugin :yard
 
 Hoe.spec('ffi-udis86') do
   self.rubyforge_name = 'ffi-udis86'
@@ -10,15 +11,14 @@ Hoe.spec('ffi-udis86') do
 
   self.rspec_options += ['--colour', '--format', 'specdoc']
 
-  self.remote_rdoc_dir = ''
+  self.yard_option += ['--protected']
+  self.remote_yard_dir = ''
   self.extra_deps = [['ffi', '>=0.6.0']]
 
   self.extra_dev_deps = [
     ['rspec', '>=1.1.12'],
     ['yard', '>=0.4.0']
   ]
-
-  self.spec_extras = {:has_rdoc => 'yard'}
 end
 
 # vim: syntax=Ruby
