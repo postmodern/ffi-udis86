@@ -2,12 +2,14 @@
 
 require 'rubygems'
 require 'hoe'
-require './tasks/spec.rb'
 require './tasks/yard.rb'
 
 Hoe.spec('ffi-udis86') do
   self.rubyforge_name = 'ffi-udis86'
   self.developer('Postmodern','postmodern.mod3@gmail.com')
+
+  self.rspec_options += ['--colour', '--format', 'specdoc']
+
   self.remote_rdoc_dir = ''
   self.extra_deps = [['ffi', '>=0.6.0']]
 

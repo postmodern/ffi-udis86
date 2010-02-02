@@ -10,7 +10,6 @@ lib/udis86/operand.rb
 lib/udis86/operand_value.rb
 lib/udis86/operand_pointer.rb
 lib/udis86/version.rb
-tasks/spec.rb
 tasks/yard.rb
 spec/spec_helper.rb
 spec/helpers/files.rb
