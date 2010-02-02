@@ -11,7 +11,7 @@ Hoe.spec('ffi-udis86') do
 
   self.rspec_options += ['--colour', '--format', 'specdoc']
 
-  self.yard_option += ['--protected']
+  self.yard_option += ['--markup', 'markdown', '--protected']
   self.remote_yard_dir = ''
   self.extra_deps = [['ffi', '>=0.6.0']]
 

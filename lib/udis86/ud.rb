@@ -63,14 +63,14 @@ module FFI
       #
       # @option options [Integer] :syntax (:att)
       #   The assembly syntax the disassembler will emit, can be either
-      #   +:att+ or +:intel+.
+      #   `:att` or `:intel`.
       #
       # @option options [String] :string
       #   A String to disassemble.
       #
       # @option options [Symbol] :vendor
       #   Sets the vendor of whose instructions to choose from. Can be
-      #   either +:amd+ or +:intel+.
+      #   either `:amd` or `:intel`.
       #
       # @option options [Integer] :pc
       #   Initial value of the Program Counter (PC).
@@ -126,14 +126,14 @@ module FFI
       #
       # @option options [Integer] :syntax (:att)
       #   The assembly syntax the disassembler will emit, can be either
-      #   +:att+ or +:intel+.
+      #   `:att` or `:intel`.
       #
       # @option options [String] :string
       #   A String to disassemble.
       #
       # @option options [Symbol] :vendor
       #   Sets the vendor of whose instructions to choose from. Can be
-      #   either +:amd+ or +:intel+.
+      #   either `:amd` or `:intel`.
       #
       # @option options [Integer] :pc
       #   Initial value of the Program Counter (PC).
@@ -242,7 +242,7 @@ module FFI
       #
       # @param [Symbol, String] new_syntax
       #   The new assembler syntax the disassembler will emit. Can be
-      #   either +:att+ or +:intel+.
+      #   either `:att` or `:intel`.
       #
       # @return [Symbol]
       #   The new assembly syntax being used.
@@ -264,7 +264,7 @@ module FFI
       # disassembly.
       #
       # @return [Symbol]
-      #   The vendor name, may be either +:amd+ or +:intel+.
+      #   The vendor name, may be either `:amd` or `:intel`.
       #
       def vendor
         self[:vendor]
@@ -275,7 +275,7 @@ module FFI
       # during disassembly.
       #
       # @param [Symbol] new_vendor
-      #   The new vendor to use, can be either +:amd+ or +:intel+.
+      #   The new vendor to use, can be either `:amd` or `:intel`.
       #
       # @return [Symbol]
       #   The new vendor to use.
