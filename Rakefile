@@ -6,7 +6,6 @@ require 'hoe'
 Hoe.plugin :yard
 
 Hoe.spec('ffi-udis86') do
-  self.rubyforge_name = 'ffi-udis86'
   self.developer('Postmodern','postmodern.mod3@gmail.com')
 
   self.rspec_options += ['--colour', '--format', 'specdoc']
