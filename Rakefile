@@ -16,7 +16,7 @@ Hoe.spec('ffi-udis86') do
   self.extra_deps = [['ffi', '>=0.6.0']]
 
   self.extra_dev_deps = [
-    ['rspec', '>=1.1.12'],
+    ['rspec', '>=1.3.0'],
     ['yard', '>=0.4.0']
   ]
 end
