@@ -37,6 +37,7 @@ describe Operand do
     operands = ud_operands('operands_memory')
 
     operands[1].type.should == :ud_op_mem
+    operands[1][:base].should == :ud_r_esp
     operands[1].base.should == :esp
   end
 
@@ -44,6 +45,7 @@ describe Operand do
     operands = ud_operands('operands_index_scale')
 
     operands[1].type.should == :ud_op_mem
+    operands[1][:index].should == :ud_r_eax
     operands[1].index.should == :eax
   end
 
@@ -64,6 +66,7 @@ describe Operand do
   it "should provide the register name for register operands" do
     operands = ud_operands('operands_simple')
 
+    operands[0][:base].should == :ud_r_eax
     operands[0].reg.should == :eax
   end
 end
