@@ -25,7 +25,7 @@ module FFI
              :insn_fill, :uint,
              :dis_mode, :uint8,
              :pc, :uint64,
-             :vendor, :ud_vendor,
+             :vendor, :uint8,
              :mapen, :pointer,
              :mnemonic, :uint,
              :operand, [Operand, 3],
@@ -233,6 +233,10 @@ module FFI
       #   The new mode of the disassembler.
       #
       def mode=(new_mode)
+        unless MODES.include?(new_mode)
+          raise(RuntimeError,"invalid disassembly mode #{new_mode}",caller)
+        end
+
         UDis86.ud_set_mode(self,new_mode)
         return new_mode
       end
@@ -267,7 +271,7 @@ module FFI
       #   The vendor name, may be either `:amd` or `:intel`.
       #
       def vendor
-        self[:vendor]
+        VENDORS[self[:vendor]]
       end
 
       #
@@ -281,7 +285,7 @@ module FFI
       #   The new vendor to use.
       #
       def vendor=(new_vendor)
-        UDis86.ud_set_vendor(self,new_vendor)
+        UDis86.ud_set_vendor(self,VENDORS.index(new_vendor))
         return new_vendor
       end
 

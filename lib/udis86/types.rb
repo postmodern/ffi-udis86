@@ -6,13 +6,15 @@ module FFI
 
     typedef :uint, :size_t
 
-    enum :ud_mode, [
-      :ud_mode_16, 16,
-      :ud_mode_32, 32,
-      :ud_mode_64, 64
+    # Disassembly modes
+    MODES = [
+      16,
+      32,
+      64
     ]
 
-    enum :ud_vendor, [:amd, :intel]
+    # Supported vendors
+    VENDORS = [:amd, :intel]
 
     enum :ud_type, [
       :ud_none,
