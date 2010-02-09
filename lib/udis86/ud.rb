@@ -179,7 +179,7 @@ module FFI
       #   The current contents of the input buffer.
       #
       def input_buffer
-        self[:inp_buff].get_string(self[:inp_end])
+        @input_buffer.get_string(0) if @input_buffer
       end
 
       #
@@ -192,9 +192,12 @@ module FFI
       #   The new contents of the input buffer.
       #
       def input_buffer=(data)
-        @input_buffer = data.to_s
+        data = data.to_s
 
-        UDis86.ud_set_input_buffer(self,@input_buffer,@input_buffer.length)
+        @input_buffer = FFI::MemoryPointer.new(data.length)
+        @input_buffer.put_bytes(0,data)
+
+        UDis86.ud_set_input_buffer(self,@input_buffer,@input_buffer.total)
         return data
       end
 
