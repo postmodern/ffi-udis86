@@ -146,8 +146,14 @@ module FFI
       #   The newly created disassembler.
       #
       def self.open(path,options={},&block)
-        File.open(path) do |file|
-          ud = self.create(options) { |ud| file.getc || -1 }
+        File.open(path,'rb') do |file|
+          ud = self.create(options) do |ud|
+            if (b = file.getc)
+              b.ord
+            else
+              -1
+            end
+          end
 
           block.call(ud) if block
         end
