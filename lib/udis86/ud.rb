@@ -185,17 +185,30 @@ module FFI
       #
       # Sets the contents of the input buffer for the disassembler.
       #
-      # @param [String] data
+      # @param [Array<Integer>, Array<String>, String] data
       #   The new contents to use for the input buffer.
       #
       # @return [String]
       #   The new contents of the input buffer.
       #
+      # @raise [RuntimeError]
+      #   The given input buffer was neigther a String, Array of chars
+      #   or Array of bytes.
+      #
       def input_buffer=(data)
         data = data.to_s
 
         @input_buffer = FFI::MemoryPointer.new(data.length)
-        @input_buffer.put_bytes(0,data)
+
+        if data.kind_of?(String)
+          @input_buffer.put_bytes(0,data)
+        elsif data.all? { |e| e.kind_of?(String) }
+          @input_buffer.put_array_of_char(0,data)
+        elsif data.all? { |e| e.kind_of?(Integer) }
+          @input_buffer.put_array_of_uint8(0,data)
+        else
+          raise(RuntimeError,"input buffer must be either a String or an Array of bytes",caller)
+        end
 
         UDis86.ud_set_input_buffer(self,@input_buffer,@input_buffer.total)
         return data
