@@ -25,5 +25,6 @@ module FFI
     attach_function :ud_insn_ptr, [:pointer], :pointer
     attach_function :ud_insn_asm, [:pointer], :string
     attach_function :ud_input_skip, [:pointer, :size_t], :void
+    attach_function :ud_lookup_mnemonic, [:ud_mnemonic_code], :string
   end
 end
