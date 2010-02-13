@@ -350,6 +350,26 @@ module FFI
       end
 
       #
+      # The mnemonic code of the last disassembled instruction.
+      #
+      # @return [Symbol]
+      #   The mnemonic code.
+      #
+      def mnemonic_code
+        self[:mnemonic]
+      end
+
+      #
+      # The mnemonic string of the last disassembled instruction.
+      #
+      # @return [String]
+      #   The mnemonic string.
+      #
+      def mnemonic
+        UDis86.ud_lookup_mnemonic(self[:mnemonic])
+      end
+
+      #
       # The 64-bit mode REX prefix of the last disassembled instruction.
       #
       # @return [Integer]
