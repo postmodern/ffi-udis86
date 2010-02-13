@@ -178,13 +178,17 @@ module FFI
       #   The current contents of the input buffer.
       #
       def input_buffer
-        @input_buffer.get_string(0) if @input_buffer
+        if @input_buffer
+          @input_buffer.get_bytes(0,@input_buffer.total)
+        else
+          ''
+        end
       end
 
       #
       # Sets the contents of the input buffer for the disassembler.
       #
-      # @param [Array<Integer>, Array<String>, String] data
+      # @param [Array<Integer>, String] data
       #   The new contents to use for the input buffer.
       #
       # @return [String]
@@ -199,12 +203,10 @@ module FFI
 
         @input_buffer = FFI::MemoryPointer.new(data.length)
 
-        if data.kind_of?(String)
-          @input_buffer.put_bytes(0,data)
-        elsif data.all? { |e| e.kind_of?(String) }
-          @input_buffer.put_array_of_char(0,data)
-        elsif data.all? { |e| e.kind_of?(Integer) }
+        if data.all? { |e| e.kind_of?(Integer) }
           @input_buffer.put_array_of_uint8(0,data)
+        elsif data.kind_of?(String)
+          @input_buffer.put_bytes(0,data)
         else
           raise(RuntimeError,"input buffer must be either a String or an Array of bytes",caller)
         end
