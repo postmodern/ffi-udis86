@@ -350,6 +350,86 @@ module FFI
       end
 
       #
+      # The 64-bit mode REX prefix of the last disassembled instruction.
+      #
+      # @return [Integer]
+      #   The 64-bit REX prefix.
+      #
+      def rex_prefix
+        self[:pfx_rex]
+      end
+
+      #
+      # The segment register prefix of the last disassembled instruction.
+      #
+      # @return [Integer]
+      #   The segment register prefix.
+      #
+      def segment_prefix
+        self[:pfx_seg]
+      end
+
+      #
+      # The operand-size prefix (66h) of the last disassembled instruction.
+      #
+      # @return [Integer]
+      #   The operand-size prefix.
+      #
+      def operand_prefix
+        self[:pfx_opr]
+      end
+
+      #
+      # The address-size prefix (67h) of the last disassembled instruction.
+      #
+      # @return [Integer]
+      #   The address-size prefix.
+      #
+      def address_prefix
+        self[:pfx_adr]
+      end
+
+      #
+      # The lock prefix of the last disassembled instruction.
+      #
+      # @return [Integer]
+      #   The lock prefix.
+      #
+      def lock_prefix
+        self[:pfx_lock]
+      end
+
+      #
+      # The rep prefix of the last disassembled instruction.
+      #
+      # @return [Integer]
+      #   The rep prefix.
+      #
+      def rep_prefix
+        self[:pfx_rep]
+      end
+
+      #
+      # The repe prefix of the last disassembled instruction.
+      #
+      # @return [Integer]
+      #   The repe prefix.
+      #
+      def repe_prefix
+        self[:pfx_repe]
+      end
+
+      #
+      # The repne prefix of the last disassembled instruction.
+      #
+      # @return [Integer]
+      #   The repne prefix.
+      #
+      def repne_prefix
+        self[:pfx_repne]
+      end
+
+      #
       # Returns the assembly syntax for the last disassembled instruction.
       #
       # @return [String]
