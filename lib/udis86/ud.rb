@@ -61,7 +61,7 @@ module FFI
       # @option options [Integer] :mode (32)
       #   The mode of disassembly, can either 16, 32 or 64.
       #
-      # @option options [Integer] :syntax (:att)
+      # @option options [Integer] :syntax (:intel)
       #   The assembly syntax the disassembler will emit, can be either
       #   `:att` or `:intel`.
       #
@@ -87,17 +87,16 @@ module FFI
       #   The newly created disassembler.
       #
       def self.create(options={},&block)
-        options = {:mode => 32, :syntax => :att}.merge(options)
-
         ud = self.new
         ud.init
+
+        ud.mode = (options[:mode] || 32)
 
         if options[:buffer]
           ud.input_buffer = options[:buffer]
         end
 
-        ud.mode = options[:mode]
-        ud.syntax = options[:syntax]
+        ud.syntax = (options[:syntax] || :intel)
 
         if options[:vendor]
           ud.vendor = options[:vendor]
@@ -124,7 +123,7 @@ module FFI
       # @option options [Integer] :mode (32)
       #   The mode of disassembly, can either 16, 32 or 64.
       #
-      # @option options [Integer] :syntax (:att)
+      # @option options [Integer] :syntax (:intel)
       #   The assembly syntax the disassembler will emit, can be either
       #   `:att` or `:intel`.
       #
