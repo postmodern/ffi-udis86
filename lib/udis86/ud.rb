@@ -65,8 +65,8 @@ module FFI
       #   The assembly syntax the disassembler will emit, can be either
       #   `:att` or `:intel`.
       #
-      # @option options [String] :string
-      #   A String to disassemble.
+      # @option options [String] :buffer
+      #   A buffer to disassemble.
       #
       # @option options [Symbol] :vendor
       #   Sets the vendor of whose instructions to choose from. Can be
@@ -92,8 +92,8 @@ module FFI
         ud = self.new
         ud.init
 
-        if options[:string]
-          ud.input_buffer = options[:string]
+        if options[:buffer]
+          ud.input_buffer = options[:buffer]
         end
 
         ud.mode = options[:mode]
@@ -128,8 +128,8 @@ module FFI
       #   The assembly syntax the disassembler will emit, can be either
       #   `:att` or `:intel`.
       #
-      # @option options [String] :string
-      #   A String to disassemble.
+      # @option options [String] :buffer
+      #   A buffer to disassemble.
       #
       # @option options [Symbol] :vendor
       #   Sets the vendor of whose instructions to choose from. Can be

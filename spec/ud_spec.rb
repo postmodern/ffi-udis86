@@ -28,8 +28,8 @@ describe UD do
       ud.pc.should == 0x400000
     end
 
-    it "should accept a :string option" do
-      ud = UD.create(:string => "\x90\x90\x90")
+    it "should accept a :buffer option" do
+      ud = UD.create(:buffer => "\x90\x90\x90")
       ud.input_buffer.should == "\x90\x90\x90"
     end
 
@@ -65,7 +65,7 @@ describe UD do
   describe "disassember" do
     before(:each) do
       @string = File.read(File.join(Helpers::FILES_DIR,'simple'))
-      @ud = UD.create(:string => @string)
+      @ud = UD.create(:buffer => @string)
     end
 
     it "should allow setting the mode" do
