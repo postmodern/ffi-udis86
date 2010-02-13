@@ -64,8 +64,10 @@ describe UD do
 
   describe "disassember" do
     before(:each) do
-      @string = File.read(File.join(Helpers::FILES_DIR,'simple'))
-      @ud = UD.create(:buffer => @string)
+      File.open(File.join(Helpers::FILES_DIR,'simple'),'rb') do |file|
+        @string = file.read
+        @ud = UD.create(:buffer => @string)
+      end
     end
 
     it "should allow setting the mode" do
