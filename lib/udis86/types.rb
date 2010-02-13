@@ -16,7 +16,7 @@ module FFI
     # Supported vendors
     VENDORS = [:amd, :intel]
 
-    enum :ud_mnemonic_code, [
+    MNEMONICS = enum :ud_mnemonic_code, [
       :ud_i3dnow,
       :ud_iaaa,
       :ud_iaad,
