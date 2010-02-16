@@ -12,7 +12,7 @@ begin
     gem.email = 'postmodern.mod3@gmail.com'
     gem.homepage = 'http://github.com/sophsec/ffi-udis86'
     gem.authors = ['Postmodern']
-    gem.add_dependency 'ffi', '>= 0.6.0'
+    gem.add_dependency 'ffi', '>= 0.6.2'
     gem.add_development_dependency 'rspec', '>= 1.3.0'
     gem.add_development_dependency 'yard', '>= 0.5.3'
     gem.has_rdoc = 'yard'

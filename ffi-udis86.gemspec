@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-02-11}
+  s.date = %q{2010-02-16}
   s.description = %q{Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.extra_rdoc_files = [
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.md",
     "Rakefile",
+    "ffi-udis86.gemspec",
     "lib/udis86.rb",
     "lib/udis86/ffi.rb",
     "lib/udis86/operand.rb",
@@ -70,16 +71,16 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<ffi>, [">= 0.6.0"])
+      s.add_runtime_dependency(%q<ffi>, [">= 0.6.2"])
       s.add_development_dependency(%q<rspec>, [">= 1.3.0"])
       s.add_development_dependency(%q<yard>, [">= 0.5.3"])
     else
-      s.add_dependency(%q<ffi>, [">= 0.6.0"])
+      s.add_dependency(%q<ffi>, [">= 0.6.2"])
       s.add_dependency(%q<rspec>, [">= 1.3.0"])
       s.add_dependency(%q<yard>, [">= 0.5.3"])
     end
   else
-    s.add_dependency(%q<ffi>, [">= 0.6.0"])
+    s.add_dependency(%q<ffi>, [">= 0.6.2"])
     s.add_dependency(%q<rspec>, [">= 1.3.0"])
     s.add_dependency(%q<yard>, [">= 0.5.3"])
   end
