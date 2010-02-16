@@ -364,11 +364,11 @@ module FFI
       #
       # The mnemonic string of the last disassembled instruction.
       #
-      # @return [String]
+      # @return [Symbol]
       #   The mnemonic string.
       #
       def mnemonic
-        UDis86.ud_lookup_mnemonic(self[:mnemonic])
+        UDis86.ud_lookup_mnemonic(self[:mnemonic]).to_sym
       end
 
       #
