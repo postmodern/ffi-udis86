@@ -26,6 +26,66 @@ module FFI
       end
 
       #
+      # Determines if the operand is a memory access.
+      #
+      # @return [Boolean]
+      #   Specifies whether the operand is a memory access.
+      #
+      def is_mem?
+        self[:type] == :ud_op_mem
+      end
+
+      #
+      # Determines if the operand is Segment:Offset pointer.
+      #
+      # @return [Boolean]
+      #   Specifies whether the operand is Segment:Offset pointer.
+      #
+      def is_seg_ptr?
+        self[:type] == :ud_op_ptr
+      end
+
+      #
+      # Determines if the operand is immediate data.
+      #
+      # @return [Boolean]
+      #   Specifies whether the operand is immediate data.
+      #
+      def is_imm?
+        self[:type] == :ud_op_imm
+      end
+
+      #
+      # Determines if the operand is a relative offset used in a jump.
+      #
+      # @return [Boolean]
+      #   Specifies whether the operand is a relative offset.
+      #
+      def is_jmp_imm?
+        self[:type] == :ud_op_jimm
+      end
+
+      #
+      # Determines if the operand is a data constant.
+      #
+      # @return [Boolean]
+      #   Specifies whether the operand is a data constant.
+      #
+      def is_const?
+        self[:type] == :ud_op_const
+      end
+
+      #
+      # Determines if the operand is a register.
+      #
+      # @return [Boolean]
+      #   Specifies whether the operand is a register.
+      #
+      def is_reg?
+        self[:type] == :ud_op_reg
+      end
+
+      #
       # The size of the operand.
       #
       # @return [Integer]
