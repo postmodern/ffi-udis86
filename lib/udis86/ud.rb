@@ -27,7 +27,7 @@ module FFI
              :pc, :uint64,
              :vendor, :uint8,
              :mapen, :pointer,
-             :mnemonic, :uint,
+             :mnemonic, :ud_mnemonic_code,
              :operand, [Operand, 3],
              :error, :uint8,
              :pfx_rex, :uint8,
@@ -358,7 +358,7 @@ module FFI
       #   The mnemonic code.
       #
       def mnemonic_code
-        MNEMONICS[self[:mnemonic]]
+        self[:mnemonic]
       end
 
       #
