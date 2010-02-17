@@ -203,7 +203,7 @@ module FFI
 
         @input_buffer = FFI::MemoryPointer.new(data.length)
 
-        if data.all? { |e| e.kind_of?(Integer) }
+        if data.kind_of?(Array)
           @input_buffer.put_array_of_uint8(0,data)
         elsif data.kind_of?(String)
           @input_buffer.put_bytes(0,data)
