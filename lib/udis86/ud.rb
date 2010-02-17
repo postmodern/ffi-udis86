@@ -195,8 +195,7 @@ module FFI
       #   The new contents of the input buffer.
       #
       # @raise [RuntimeError]
-      #   The given input buffer was neigther a String, Array of chars
-      #   or Array of bytes.
+      #   The given input buffer was neigther a String or an Array of bytes.
       #
       def input_buffer=(data)
         data = data.to_s
