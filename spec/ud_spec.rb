@@ -164,6 +164,16 @@ describe UD do
       @ud.to_hex.should == '90'
     end
 
+    it "should provide the mnemonic code of the disassembled instructions" do
+      @ud.next_insn.should == 1
+      @ud.mnemonic_code.should == :ud_inop
+    end
+
+    it "should provide the mnemonic of the disassembled instructions" do
+      @ud.next_insn.should == 1
+      @ud.mnemonic.should == :nop
+    end
+
     it "should provide the assembly form of the disassembled instructions" do
       @ud.next_insn.should == 1
       @ud.to_asm.should == 'nop '
