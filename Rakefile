@@ -15,6 +15,7 @@ begin
     gem.add_dependency 'ffi', '>= 0.6.2'
     gem.add_development_dependency 'rspec', '>= 1.3.0'
     gem.add_development_dependency 'yard', '>= 0.5.3'
+    gem.requirements = ['udis86, 1.7 or greater']
     gem.has_rdoc = 'yard'
   end
   Jeweler::GemcutterTasks.new

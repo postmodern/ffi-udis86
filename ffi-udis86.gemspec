@@ -9,61 +9,62 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-02-19}
+  s.date = %q{2010-05-10}
   s.description = %q{Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.extra_rdoc_files = [
     "ChangeLog.md",
-    "LICENSE.txt",
-    "README.md"
+     "LICENSE.txt",
+     "README.md"
   ]
   s.files = [
     ".gitignore",
-    ".specopts",
-    ".yardopts",
-    "ChangeLog.md",
-    "LICENSE.txt",
-    "README.md",
-    "Rakefile",
-    "ffi-udis86.gemspec",
-    "lib/udis86.rb",
-    "lib/udis86/ffi.rb",
-    "lib/udis86/operand.rb",
-    "lib/udis86/operand_pointer.rb",
-    "lib/udis86/operand_value.rb",
-    "lib/udis86/types.rb",
-    "lib/udis86/ud.rb",
-    "lib/udis86/version.rb",
-    "spec/helpers/files.rb",
-    "spec/helpers/files/operands_index_scale",
-    "spec/helpers/files/operands_index_scale.s",
-    "spec/helpers/files/operands_memory",
-    "spec/helpers/files/operands_memory.s",
-    "spec/helpers/files/operands_offset",
-    "spec/helpers/files/operands_offset.s",
-    "spec/helpers/files/operands_simple",
-    "spec/helpers/files/operands_simple.s",
-    "spec/helpers/files/simple",
-    "spec/helpers/files/simple.s",
-    "spec/helpers/operands.rb",
-    "spec/operand_spec.rb",
-    "spec/spec_helper.rb",
-    "spec/ud_spec.rb",
-    "spec/udis86_spec.rb"
+     ".specopts",
+     ".yardopts",
+     "ChangeLog.md",
+     "LICENSE.txt",
+     "README.md",
+     "Rakefile",
+     "ffi-udis86.gemspec",
+     "lib/udis86.rb",
+     "lib/udis86/ffi.rb",
+     "lib/udis86/operand.rb",
+     "lib/udis86/operand_pointer.rb",
+     "lib/udis86/operand_value.rb",
+     "lib/udis86/types.rb",
+     "lib/udis86/ud.rb",
+     "lib/udis86/version.rb",
+     "spec/helpers/files.rb",
+     "spec/helpers/files/operands_index_scale",
+     "spec/helpers/files/operands_index_scale.s",
+     "spec/helpers/files/operands_memory",
+     "spec/helpers/files/operands_memory.s",
+     "spec/helpers/files/operands_offset",
+     "spec/helpers/files/operands_offset.s",
+     "spec/helpers/files/operands_simple",
+     "spec/helpers/files/operands_simple.s",
+     "spec/helpers/files/simple",
+     "spec/helpers/files/simple.s",
+     "spec/helpers/operands.rb",
+     "spec/operand_spec.rb",
+     "spec/spec_helper.rb",
+     "spec/ud_spec.rb",
+     "spec/udis86_spec.rb"
   ]
   s.has_rdoc = %q{yard}
   s.homepage = %q{http://github.com/sophsec/ffi-udis86}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.requirements = ["udis86, 1.7 or greater"]
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.}
   s.test_files = [
-    "spec/spec_helper.rb",
-    "spec/udis86_spec.rb",
-    "spec/ud_spec.rb",
-    "spec/helpers/files.rb",
-    "spec/helpers/operands.rb",
-    "spec/operand_spec.rb"
+    "spec/operand_spec.rb",
+     "spec/spec_helper.rb",
+     "spec/ud_spec.rb",
+     "spec/helpers/files.rb",
+     "spec/helpers/operands.rb",
+     "spec/udis86_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
