@@ -144,7 +144,7 @@ module FFI
       # @yieldparam [UD] ud
       #   The newly created disassembler.
       #
-      def self.open(path,options={},&block)
+      def self.open(path,options={})
         File.open(path,'rb') do |file|
           ud = self.create(options) do |ud|
             if (b = file.getc)
@@ -154,7 +154,7 @@ module FFI
             end
           end
 
-          block.call(ud) if block
+          yield ud if block_given?
         end
 
         return nil
@@ -547,9 +547,9 @@ module FFI
       # @return [UD]
       #   The disassembler.
       #
-      def disassemble(&block)
+      def disassemble
         until UDis86.ud_disassemble(self) == 0
-          block.call(self) if block
+          yield self if block_given?
         end
 
         return self
