@@ -197,7 +197,7 @@ describe UD do
     end
 
     it "should return an Enumerator when no block is given to #each" do
-      @ud.each.class.should == Enumerator
+      @ud.each.class.should == Enumerable::Enumerator
     end
   end
 end
