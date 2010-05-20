@@ -4,8 +4,6 @@ module FFI
   module UDis86
     extend FFI::Library
 
-    typedef :uint, :size_t
-
     # Disassembly modes
     MODES = [
       16,
