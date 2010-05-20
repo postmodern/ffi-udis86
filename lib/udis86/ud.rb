@@ -3,7 +3,6 @@ require 'udis86/operand'
 require 'udis86/ffi'
 
 require 'ffi'
-require 'enumerator'
 
 module FFI
   module UDis86
@@ -557,25 +556,7 @@ module FFI
       end
 
       alias :disas :disassemble
-
-      #
-      # Reads each byte, disassembling each instruction.
-      #
-      # @yield [ud]
-      #   If a block is given, it will be passed the disassembler after
-      #   each instruction has been disassembled.
-      #
-      # @yieldparam [UD] ud
-      #   The disassembler.
-      #
-      # @return [UD, Enumerator]
-      #   The disassembler, or an enumerator if no block is given.
-      #
-      def each(&block)
-        return enum_for(:each) unless block
-
-        return disassemble(&block)
-      end
+      alias :each :disassemble
 
     end
   end

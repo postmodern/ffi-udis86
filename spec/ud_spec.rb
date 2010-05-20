@@ -191,13 +191,5 @@ describe UD do
         ud.to_asm.should == ops.shift
       end
     end
-
-    it "should be Enumerable" do
-      @ud.should be_kind_of(Enumerable)
-    end
-
-    it "should return an Enumerator when no block is given to #each" do
-      @ud.each.class.should == Enumerable::Enumerator
-    end
   end
 end
