@@ -1,26 +1,28 @@
 require 'rubygems'
-require 'rake'
-require './lib/udis86/version.rb'
+require 'bundler'
 
 begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = 'ffi-udis86'
-    gem.version = FFI::UDis86::VERSION
-    gem.summary = %Q{Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.}
-    gem.description = %Q{Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.}
-    gem.email = 'postmodern.mod3@gmail.com'
-    gem.homepage = 'http://github.com/sophsec/ffi-udis86'
-    gem.authors = ['Postmodern']
-    gem.add_dependency 'ffi', '>= 0.6.2'
-    gem.add_development_dependency 'rspec', '>= 1.3.0'
-    gem.add_development_dependency 'yard', '>= 0.5.3'
-    gem.requirements = ['udis86, 1.7 or greater']
-    gem.has_rdoc = 'yard'
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+  Bundler.setup(:development, :doc)
+rescue Bundler::BundlerError => e
+  STDERR.puts e.message
+  STDERR.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
+end
+
+require 'rake'
+require 'jeweler'
+require './lib/udis86/version.rb'
+
+Jeweler::Tasks.new do |gem|
+  gem.name = 'ffi-udis86'
+  gem.version = FFI::UDis86::VERSION
+  gem.summary = %Q{Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.}
+  gem.description = %Q{Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.}
+  gem.email = 'postmodern.mod3@gmail.com'
+  gem.homepage = 'http://github.com/sophsec/ffi-udis86'
+  gem.authors = ['Postmodern']
+  gem.requirements = ['udis86, 1.7 or greater']
+  gem.has_rdoc = 'yard'
 end
 
 require 'spec/rake/spectask'
@@ -30,15 +32,7 @@ Spec::Rake::SpecTask.new(:spec) do |spec|
   spec.spec_opts = ['--options', '.specopts']
 end
 
-task :spec => :check_dependencies
 task :default => :spec
 
-begin
-  require 'yard'
-
-  YARD::Rake::YardocTask.new
-rescue LoadError
-  task :yard do
-    abort "YARD is not available. In order to run yard, you must: gem install yard"
-  end
-end
+require 'yard'
+YARD::Rake::YardocTask.new
