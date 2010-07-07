@@ -48,7 +48,7 @@ Disassemble and print instructions:
 ## Requirements
 
 * [udis86](http://udis86.sourceforge.net/) >= 1.7
-* [ffi](http://github.com/ffi/ffi) >= 0.6.2
+* [ffi](http://github.com/ffi/ffi) ~> 0.6.0
 
 ## Install
 
