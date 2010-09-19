@@ -11,7 +11,7 @@ end
 
 require 'rake'
 require 'jeweler'
-require './lib/udis86/version.rb'
+require './lib/ffi/udis86/version.rb'
 
 Jeweler::Tasks.new do |gem|
   gem.name = 'ffi-udis86'

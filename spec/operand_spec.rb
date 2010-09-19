@@ -1,5 +1,5 @@
-require 'udis86/operand'
-require 'udis86/ud'
+require 'ffi/udis86/operand'
+require 'ffi/udis86/ud'
 
 require 'spec_helper'
 require 'helpers/operands'

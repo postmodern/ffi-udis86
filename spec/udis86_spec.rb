@@ -1,4 +1,4 @@
-require 'udis86/version'
+require 'ffi/udis86/version'
 
 require 'spec_helper'
 

@@ -1,6 +1,6 @@
-require 'udis86/types'
-require 'udis86/operand'
-require 'udis86/ffi'
+require 'ffi/udis86/types'
+require 'ffi/udis86/operand'
+require 'ffi/udis86/udis86'
 
 require 'ffi'
 

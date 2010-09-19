@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-07-07}
+  s.date = %q{2010-09-19}
   s.description = %q{Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.extra_rdoc_files = [
@@ -23,18 +23,20 @@ Gem::Specification.new do |s|
     ".yardopts",
     "ChangeLog.md",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.md",
     "Rakefile",
     "ffi-udis86.gemspec",
+    "lib/ffi/udis86.rb",
+    "lib/ffi/udis86/operand.rb",
+    "lib/ffi/udis86/operand_pointer.rb",
+    "lib/ffi/udis86/operand_value.rb",
+    "lib/ffi/udis86/types.rb",
+    "lib/ffi/udis86/ud.rb",
+    "lib/ffi/udis86/udis86.rb",
+    "lib/ffi/udis86/version.rb",
     "lib/udis86.rb",
-    "lib/udis86/ffi.rb",
-    "lib/udis86/operand.rb",
-    "lib/udis86/operand_pointer.rb",
-    "lib/udis86/operand_value.rb",
-    "lib/udis86/types.rb",
-    "lib/udis86/ud.rb",
-    "lib/udis86/version.rb",
     "spec/helpers/files.rb",
     "spec/helpers/files/operands_index_scale",
     "spec/helpers/files/operands_index_scale.s",
@@ -73,22 +75,22 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<ffi>, ["~> 0.6.0"])
-      s.add_development_dependency(%q<bundler>, ["~> 0.9.25"])
+      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<rake>, ["~> 0.8.7"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.4.0"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.5.0.pre"])
       s.add_development_dependency(%q<rspec>, ["~> 1.3.0"])
     else
       s.add_dependency(%q<ffi>, ["~> 0.6.0"])
-      s.add_dependency(%q<bundler>, ["~> 0.9.25"])
+      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<rake>, ["~> 0.8.7"])
-      s.add_dependency(%q<jeweler>, ["~> 1.4.0"])
+      s.add_dependency(%q<jeweler>, ["~> 1.5.0.pre"])
       s.add_dependency(%q<rspec>, ["~> 1.3.0"])
     end
   else
     s.add_dependency(%q<ffi>, ["~> 0.6.0"])
-    s.add_dependency(%q<bundler>, ["~> 0.9.25"])
+    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<rake>, ["~> 0.8.7"])
-    s.add_dependency(%q<jeweler>, ["~> 1.4.0"])
+    s.add_dependency(%q<jeweler>, ["~> 1.5.0.pre"])
     s.add_dependency(%q<rspec>, ["~> 1.3.0"])
   end
 end

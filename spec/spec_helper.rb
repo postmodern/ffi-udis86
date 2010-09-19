@@ -10,7 +10,7 @@ rescue Bundler::BundlerError => e
 end
 
 require 'spec'
-require 'udis86/version'
+require 'ffi/udis86/version'
 
 include FFI
 include FFI::UDis86

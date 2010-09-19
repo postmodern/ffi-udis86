@@ -1,4 +1,4 @@
-require 'udis86/operand_pointer'
+require 'ffi/udis86/operand_pointer'
 
 require 'ffi'
 

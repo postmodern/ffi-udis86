@@ -1,5 +1,5 @@
-require 'udis86/types'
-require 'udis86/ud'
+require 'ffi/udis86/types'
+require 'ffi/udis86/ud'
 
 require 'ffi'
 

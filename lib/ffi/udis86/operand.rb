@@ -1,5 +1,5 @@
-require 'udis86/operand_value'
-require 'udis86/types'
+require 'ffi/udis86/operand_value'
+require 'ffi/udis86/types'
 
 require 'ffi'
 
