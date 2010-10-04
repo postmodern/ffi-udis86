@@ -114,10 +114,10 @@ module FFI
       end
 
       #
-      # The base address used by the operand.
+      # The base value used by the operand.
       #
-      # @return [Integer]
-      #   The base address of the operand.
+      # @return [Symbol]
+      #   The base value of the operand.
       #
       def base
         REGS[self[:base]]
@@ -128,7 +128,7 @@ module FFI
       #
       # The index value used by the operand.
       #
-      # @return [Integer]
+      # @return [Symbol]
       #   The index value of the operand.
       #
       def index
