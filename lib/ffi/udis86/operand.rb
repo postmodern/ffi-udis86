@@ -18,7 +18,7 @@ module FFI
       #
       # The type of the operand.
       #
-      # @return [Integer]
+      # @return [Symbol]
       #   The type of the operand.
       #
       def type
