@@ -928,6 +928,16 @@ module FFI
       :ud_r_rip => :rip,
     }
 
+    # Acceptable operand types
+    OPERAND_TYPES = [
+      :ud_op_reg,
+      :ud_op_mem,
+      :ud_op_ptr,
+      :ud_op_imm,
+      :ud_op_jimm,
+      :ud_op_const
+    ]
+
     # Syntaxes
     SYNTAX = {
       :att => :ud_translate_att,
