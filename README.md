@@ -1,7 +1,7 @@
 # ffi-udis86
 
-* [github.com/sophsec/ffi-udis86](http://github.com/sophsec/ffi-udis86/)
-* [github.com/sophsec/ffi-udis86/issue](http://github.com/sophsec/ffi-udis86/)
+* [Source](http://github.com/sophsec/ffi-udis86/)
+* [Issue](http://github.com/sophsec/ffi-udis86/)
 * Postmodern (postmodern.mod3 at gmail.com)
 
 ## Description
