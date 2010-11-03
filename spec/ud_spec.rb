@@ -46,16 +46,18 @@ describe UD do
   end
 
   describe "open" do
+    let(:hex) { ['90', '90', 'c3'] }
+
     it "should be able to open files" do
       UD.open(File.join(Helpers::FILES_DIR,'simple')) do |ud|
         ud.next_insn.should == 1
-        ud.to_hex.should == '90'
+        ud.to_hex.should == hex[0]
 
         ud.next_insn.should == 1
-        ud.to_hex.should == '90'
+        ud.to_hex.should == hex[1]
 
         ud.next_insn.should == 1
-        ud.to_hex.should == 'c3'
+        ud.to_hex.should == hex[2]
 
         ud.next_insn.should == 0
       end
@@ -63,6 +65,9 @@ describe UD do
   end
 
   describe "disassember" do
+    let(:hex) { ['90', '90', 'c3'] }
+    let(:ops) { ['nop ', 'nop ', 'ret '] }
+
     before(:each) do
       File.open(File.join(Helpers::FILES_DIR,'simple'),'rb') do |file|
         @string = file.read
@@ -125,18 +130,18 @@ describe UD do
       @ud.skip(2)
 
       @ud.next_insn
-      @ud.to_asm.should == 'ret '
+      @ud.to_asm.should == ops.last
     end
 
     it "should get the next instruction" do
       @ud.next_insn.should == 1
-      @ud.to_asm.should == 'nop '
+      @ud.to_asm.should == ops[0]
 
       @ud.next_insn.should == 1
-      @ud.to_asm.should == 'nop '
+      @ud.to_asm.should == ops[1]
 
       @ud.next_insn.should == 1
-      @ud.to_asm.should == 'ret '
+      @ud.to_asm.should == ops[2]
 
       @ud.next_insn.should == 0
     end
@@ -161,7 +166,7 @@ describe UD do
 
     it "should provide hex form of the bytes" do
       @ud.next_insn.should == 1
-      @ud.to_hex.should == '90'
+      @ud.to_hex.should == hex.first
     end
 
     it "should provide the mnemonic code of the disassembled instructions" do
@@ -176,7 +181,7 @@ describe UD do
 
     it "should provide the assembly form of the disassembled instructions" do
       @ud.next_insn.should == 1
-      @ud.to_asm.should == 'nop '
+      @ud.to_asm.should == ops[0]
     end
 
     it "should provide the disassembled operands of the instruction" do
@@ -185,11 +190,11 @@ describe UD do
     end
 
     it "should disassemble every byte" do
-      ops = ['nop ', 'nop ', 'ret ']
+      disassembled = []
 
-      @ud.disassemble do |ud|
-        ud.to_asm.should == ops.shift
-      end
+      @ud.disassemble { |ud| disassembled << ud.to_asm }
+
+      disassembled.should == ops
     end
   end
 end
