@@ -16,6 +16,7 @@ Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.
 * Supports disassembling files and arbitrary input.
 * Supports using input buffers.
 * Supports using input callbacks.
+* Supports fully disassembling instructions and operands.
 
 ## Examples
 
