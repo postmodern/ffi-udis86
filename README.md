@@ -45,6 +45,44 @@ Disassemble and print instructions:
       puts insn
     end
 
+Disassemble and print information about the instruction and operands:
+
+    asm = "\x75\x62\x48\x83\xc4\x20\x5b\xc3\x48\x8d\x0d\x23\x0c\x01\x00\x49\x89\xf0"
+    
+    ud = FFI::UDis86::UD.create(
+      :buffer => asm,
+      :mode => 64,
+      :vendor => :amd,
+      :syntax => :att
+    )
+    
+    ud.disas do |insn|
+      puts insn
+      puts "  * Offset: #{insn.insn_offset}"
+      puts "  * Length: #{insn.insn_length}"
+      puts "  * Mnemonic: #{insn.mnemonic}"
+    
+      operands = insn.operands.reverse.map do |operand|
+        if operand.is_mem?
+          ptr = [operand.base]
+          ptr << operand.index if operand.index
+          ptr << operand.scale if operand.scale
+    
+          "Memory Access (#{ptr.join(',')})"
+        elsif operand.is_imm?
+          'Immediate Data'
+        elsif operand.is_jmp_imm?
+          'Relative Offset'
+        elsif operand.is_const?
+          'Constant'
+        elsif operand.is_reg?
+          "Register (#{operand.reg})"
+        end
+      end
+    
+      puts '  * Operands: ' + operands.join(' -> ')
+    end
+
 ## Requirements
 
 * [udis86](http://udis86.sourceforge.net/) >= 1.7
