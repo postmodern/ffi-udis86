@@ -471,7 +471,7 @@ module FFI
         UDis86.ud_insn_hex(self)
       end
 
-      alias :to_s :to_asm
+      alias to_s to_asm
 
       #
       # Returns the operands for the last disassembled instruction.
@@ -548,8 +548,8 @@ module FFI
         return self
       end
 
-      alias :disas :disassemble
-      alias :each :disassemble
+      alias disas disassemble
+      alias each disassemble
 
     end
   end
