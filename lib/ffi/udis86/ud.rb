@@ -118,7 +118,7 @@ module FFI
       #   The path to the file.
       #
       # @param [Hash] options
-      #   Additional dissaembly options.
+      #   Additional options for the disassembler.
       #
       # @option options [Integer] :mode (32)
       #   The mode of disassembly, can either 16, 32 or 64.
@@ -195,7 +195,7 @@ module FFI
       #   The new contents of the input buffer.
       #
       # @raise [RuntimeError]
-      #   The given input buffer was neigther a String or an Array of bytes.
+      #   The given input buffer was neither a String or an Array of bytes.
       #
       def input_buffer=(data)
         data = data.to_s
@@ -286,7 +286,7 @@ module FFI
       end
 
       #
-      # The vendor of whose instructions are to be choosen from during
+      # The vendor of whose instructions are to be chosen from during
       # disassembly.
       #
       # @return [Symbol]
@@ -297,7 +297,7 @@ module FFI
       end
 
       #
-      # Sets the vendor, of whose instructions are to be choosen from
+      # Sets the vendor, of whose instructions are to be chosen from
       # during disassembly.
       #
       # @param [Symbol] new_vendor
