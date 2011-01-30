@@ -87,7 +87,7 @@ Disassemble and print information about the instruction and operands:
 ## Requirements
 
 * [udis86](http://udis86.sourceforge.net/) >= 1.7
-* [ffi](http://github.com/ffi/ffi) ~> 0.6.0
+* [ffi](http://github.com/ffi/ffi) ~> 0.6.0, ~> 1.0.0
 
 ## Install
 
