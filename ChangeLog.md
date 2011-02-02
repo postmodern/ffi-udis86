@@ -1,3 +1,10 @@
+### 0.1.2 / 2011-02-02
+
+* Opted into [gem-tester.org](http://gem-testers.org/).
+* Require ffi ~> 0.6.0 or ~> 1.0.0.
+  * JRuby requires ffi ~> 1.0.0.
+* Fixed typos in the YARD Documentation.
+
 ### 0.1.1 / 2010-11-06
 
 * Added an external requirement for udis86 >= 1.7.
