@@ -1,6 +1,9 @@
 name: ffi-udis86
 summary: Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.
-description: Ruby FFI bindings for udis86, a x86 and x86-64 disassembler.
+description:
+  ffi-udis86 provides Ruby FFI bindings for the udis86, a x86 and x86-64
+  disassembler.
+
 license: MIT
 authors: Postmodern
 email: postmodern.mod3@gmail.com
