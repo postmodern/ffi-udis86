@@ -7,7 +7,7 @@ module FFI
   module UDis86
     extend FFI::Library
 
-    ffi_lib 'libudis86'
+    ffi_lib 'udis86'
 
     attach_function :ud_init, [:pointer], :void
     attach_function :ud_set_input_hook, [:pointer, :ud_input_callback], :void
