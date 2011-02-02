@@ -2,7 +2,8 @@
 
 * [Source](http://github.com/sophsec/ffi-udis86/)
 * [Issue](http://github.com/sophsec/ffi-udis86/)
-* Postmodern (postmodern.mod3 at gmail.com)
+* [Documentation](http://rubydoc.info/gems/ffi-udis86/)
+* [Email](postmodern.mod3 at gmail.com)
 
 ## Description
 
@@ -96,4 +97,3 @@ Disassemble and print information about the instruction and operands:
 ## License
 
 See {file:LICENSE.txt} for license information.
-
