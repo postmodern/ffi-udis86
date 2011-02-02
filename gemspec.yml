@@ -7,7 +7,7 @@ email: postmodern.mod3@gmail.com
 homepage: http://github.com/sophsec/ffi-udis86
 has_yard: true
 
-requirements: udis86, 1.7 or greater
+requirements: udis86 >= 1.7
 
 dependencies:
   ffi: ~> 0.6.0, ~> 1.0.0
