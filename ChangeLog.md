@@ -1,3 +1,8 @@
+### 0.1.3 / 2012-05-11
+
+* Require ffi ~> 1.0.
+* Load `libudis86.so.0` if `libudis86.so` does not exist.
+
 ### 0.1.2 / 2011-02-02
 
 * Opted into [gem-tester.org](http://gem-testers.org/).
