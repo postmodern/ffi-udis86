@@ -1,6 +1,6 @@
 language: ruby
 before_install:
-  - sudo apt-get install libudis86-dev
+  - sudo apt-get install udis86-dev
   - gem install ffi rubygems-tasks rspec yard
 rvm:
   - 1.9.3
