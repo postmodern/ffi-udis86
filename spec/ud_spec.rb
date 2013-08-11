@@ -99,15 +99,30 @@ describe UD do
       @ud.pc.should == 0x400000
     end
 
-    it "should provide read access to the input buffer" do
-      @ud.input_buffer.should == @string
+    describe "#input_buffer" do
+      it "should provide read access to the input buffer" do
+        @ud.input_buffer.should == @string
+      end
     end
 
-    it "should allow setting the input buffer" do
-      new_input = "\xc3"
+    describe "#input_buffer=" do
+      let(:buffer) { "\x90\x90\xc3" }
 
-      @ud.input_buffer = new_input
-      @ud.input_buffer.should == new_input
+      it "should allow setting the input buffer" do
+        @ud.input_buffer = buffer
+
+        @ud.input_buffer.should == buffer
+      end
+
+      context "when given an Array of bytes" do
+        let(:array) { [0x90, 0x90, 0xc3] }
+
+        it "should convert them to an input buffer" do
+          @ud.input_buffer = array
+
+          @ud.input_buffer.should == buffer
+        end
+      end
     end
 
     it "should allow setting an input callback" do

@@ -198,8 +198,6 @@ module FFI
       #   The given input buffer was neither a String or an Array of bytes.
       #
       def input_buffer=(data)
-        data = data.to_s
-
         @input_buffer = FFI::MemoryPointer.new(data.length)
 
         if data.kind_of?(Array)
