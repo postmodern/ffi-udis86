@@ -1,3 +1,5 @@
+# encoding: US-ASCII
+
 require 'ffi/udis86/ud'
 
 require 'spec_helper'
