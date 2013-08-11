@@ -75,28 +75,36 @@ describe UD do
       end
     end
 
-    it "should allow setting the mode" do
-      @ud.mode = 64
+    describe "#mode=" do
+      it "should allow setting the mode" do
+        @ud.mode = 64
 
-      @ud.mode.should == 64
+        @ud.mode.should == 64
+      end
     end
 
-    it "should allow setting the syntax" do
-      lambda {
-        @ud.syntax = :att
-      }.should_not raise_error(RuntimeError)
+    describe "#syntax=" do
+      it "should allow setting the syntax" do
+        lambda {
+          @ud.syntax = :att
+        }.should_not raise_error(RuntimeError)
+      end
     end
 
-    it "should allow setting the vendor" do
-      @ud.vendor = :amd
+    describe "#vendor" do
+      it "should allow setting the vendor" do
+        @ud.vendor = :amd
 
-      @ud.vendor.should == :amd
+        @ud.vendor.should == :amd
+      end
     end
 
-    it "should allow setting the program counter (PC)" do
-      @ud.pc = 0x400000
+    describe "#pc" do
+      it "should allow setting the program counter (PC)" do
+        @ud.pc = 0x400000
 
-      @ud.pc.should == 0x400000
+        @ud.pc.should == 0x400000
+      end
     end
 
     describe "#input_buffer" do
@@ -125,91 +133,115 @@ describe UD do
       end
     end
 
-    it "should allow setting an input callback" do
-      bytes = [0x90, 0xc3]
+    describe "#input_callback" do
+      it "should allow setting an input callback" do
+        bytes = [0x90, 0xc3]
 
-      @ud.input_callback do |ud|
-        bytes.shift || -1
+        @ud.input_callback do |ud|
+          bytes.shift || -1
+        end
+
+        @ud.next_insn.should == 1
+        @ud.to_asm.should == 'nop '
+
+        @ud.next_insn.should == 1
+        @ud.to_asm.should == 'ret '
+
+        @ud.next_insn.should == 0
       end
-
-      @ud.next_insn.should == 1
-      @ud.to_asm.should == 'nop '
-
-      @ud.next_insn.should == 1
-      @ud.to_asm.should == 'ret '
-
-      @ud.next_insn.should == 0
     end
 
-    it "should allow the skipping of input bytes" do
-      @ud.skip(2)
+    describe "#skip" do
+      it "should allow the skipping of input bytes" do
+        @ud.skip(2)
 
-      @ud.next_insn
-      @ud.to_asm.should == ops.last
+        @ud.next_insn
+        @ud.to_asm.should == ops.last
+      end
     end
 
-    it "should get the next instruction" do
-      @ud.next_insn.should == 1
-      @ud.to_asm.should == ops[0]
+    describe "#next_insn" do
+      it "should get the next instruction" do
+        @ud.next_insn.should == 1
+        @ud.to_asm.should == ops[0]
 
-      @ud.next_insn.should == 1
-      @ud.to_asm.should == ops[1]
+        @ud.next_insn.should == 1
+        @ud.to_asm.should == ops[1]
 
-      @ud.next_insn.should == 1
-      @ud.to_asm.should == ops[2]
+        @ud.next_insn.should == 1
+        @ud.to_asm.should == ops[2]
 
-      @ud.next_insn.should == 0
+        @ud.next_insn.should == 0
+      end
     end
 
-    it "should specify the instruction length" do
-      @ud.next_insn.should == 1
-      @ud.insn_length.should == 1
+    describe "#insn_length" do
+      it "should specify the instruction length" do
+        @ud.next_insn.should == 1
+        @ud.insn_length.should == 1
+      end
     end
 
-    it "should specify the instruction offset" do
-      @ud.next_insn.should == 1
-      @ud.next_insn.should == 1
+    describe "#insn_offset" do
+      it "should specify the instruction offset" do
+        @ud.next_insn.should == 1
+        @ud.next_insn.should == 1
 
-      @ud.insn_offset.should == 1
+        @ud.insn_offset.should == 1
+      end
     end
 
-    it "should provide a pointer to the instruction bytes" do
-      @ud.next_insn.should == 1
+    describe "#insn_ptr" do
+      it "should provide a pointer to the instruction bytes" do
+        @ud.next_insn.should == 1
 
-      @ud.insn_ptr.get_string(0).should == "\x90"
+        @ud.insn_ptr.get_string(0).should == "\x90"
+      end
     end
 
-    it "should provide hex form of the bytes" do
-      @ud.next_insn.should == 1
-      @ud.to_hex.should == hex.first
+    describe "#to_hex" do
+      it "should provide hex form of the bytes" do
+        @ud.next_insn.should == 1
+        @ud.to_hex.should == hex.first
+      end
     end
 
-    it "should provide the mnemonic code of the disassembled instructions" do
-      @ud.next_insn.should == 1
-      @ud.mnemonic_code.should == :ud_inop
+    describe "#mnemonic_code" do
+      it "should provide the mnemonic code of the disassembled instructions" do
+        @ud.next_insn.should == 1
+        @ud.mnemonic_code.should == :ud_inop
+      end
     end
 
-    it "should provide the mnemonic of the disassembled instructions" do
-      @ud.next_insn.should == 1
-      @ud.mnemonic.should == :nop
+    describe "#mnemonic" do
+      it "should provide the mnemonic of the disassembled instructions" do
+        @ud.next_insn.should == 1
+        @ud.mnemonic.should == :nop
+      end
     end
 
-    it "should provide the assembly form of the disassembled instructions" do
-      @ud.next_insn.should == 1
-      @ud.to_asm.should == ops[0]
+    describe "#to_asm" do
+      it "should provide the assembly form of the disassembled instructions" do
+        @ud.next_insn.should == 1
+        @ud.to_asm.should == ops[0]
+      end
     end
 
-    it "should provide the disassembled operands of the instruction" do
-      @ud.next_insn.should == 1
-      @ud.operands.should == []
+    describe "#operands" do
+      it "should provide the disassembled operands of the instruction" do
+        @ud.next_insn.should == 1
+        @ud.operands.should == []
+      end
     end
 
-    it "should disassemble every byte" do
-      disassembled = []
+    describe "#disassemble" do
+      it "should disassemble every byte" do
+        disassembled = []
 
-      @ud.disassemble { |ud| disassembled << ud.to_asm }
+        @ud.disassemble { |ud| disassembled << ud.to_asm }
 
-      disassembled.should == ops
+        disassembled.should == ops
+      end
     end
   end
 end
