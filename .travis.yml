@@ -1,6 +1,6 @@
 language: ruby
 before_install:
-  - uname -a
+  - lsb_release -a
   - sudo apt-cache search udis
   - sudo apt-get install udis86-dev
   - gem install ffi rubygems-tasks rspec yard
