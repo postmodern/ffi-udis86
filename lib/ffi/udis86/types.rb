@@ -945,6 +945,7 @@ module FFI
     }
 
     callback :ud_input_callback, [:pointer], :int
+    callback :ud_sym_resolver_callback, [:pointer, :uint64, :pointer], :pointer
     callback :ud_translator_callback, [:pointer], :void
   end
 end

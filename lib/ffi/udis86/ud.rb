@@ -11,46 +11,52 @@ module FFI
       include Enumerable
 
       layout :inp_hook, :ud_input_callback,
-             :inp_curr, :uint8,
-             :inp_fill, :uint8,
              :inp_file, :pointer,
-             :inp_ctr, :uint8,
-             :inp_buff, :pointer,
-             :inp_buff_end, :pointer,
-             :inp_end, :uint8,
+             :inp_buf, :pointer,
+             :inp_buf_size, :size_t,
+             :inp_buf_index, :size_t,
+             :inp_curr, :uint8,
+             :inp_ctr, :size_t,
+             :inp_sess, [NativeType::UINT8, 64],
+             :inp_end, :int,
+             :inp_peek, :int,
              :translator, :ud_translator_callback,
              :insn_offset, :uint64,
-             :insn_hexcode, [:char, 32],
-             :insn_buffer, [:char, 64],
-             :insn_fill, :uint,
+             :insn_hexcode, [:char, 64],
+             :asm_buf, :pointer,
+             :asm_buf_size, :size_t,
+             :asm_buf_fill, :size_t,
+             :asm_buf_int, [:char, 128],
+             :sym_resolver, :ud_sym_resolver_callback,
              :dis_mode, :uint8,
              :pc, :uint64,
              :vendor, :uint8,
-             :mapen, :pointer,
              :mnemonic, :ud_mnemonic_code,
-             :operand, [Operand, 3],
+             :operand, [Operand, 4],
              :error, :uint8,
+             :_rex, :uint8,
              :pfx_rex, :uint8,
              :pfx_seg, :uint8,
              :pfx_opr, :uint8,
              :pfx_adr, :uint8,
              :pfx_lock, :uint8,
+             :pfx_str, :uint8,
              :pfx_rep, :uint8,
              :pfx_repe, :uint8,
              :pfx_repne, :uint8,
-             :pfx_insn, :uint8,
-             :default64, :uint8,
              :opr_mode, :uint8,
              :adr_mode, :uint8,
              :br_far, :uint8,
              :br_near, :uint8,
-             :implicit_addr, :uint8,
-             :c1, :uint8,
-             :c2, :uint8,
-             :c3, :uint8,
-             :inp_cache, [NativeType::UINT8, 256],
-             :inp_sess, [NativeType::UINT8, 64],
-             :itab_entry, :pointer
+             :have_modrm, :uint8,
+             :modrm, :uint8,
+             :vex_op, :uint8,
+             :vex_b1, :uint8,
+             :vex_b2, :uint8,
+             :primary_opcode, :uint8,
+             :user_opaque_data, :pointer,
+             :itab_entry, :pointer,
+             :le, :pointer
 
       #
       # Creates a new disassembler object.
@@ -203,7 +209,7 @@ module FFI
         if data.kind_of?(Array)
           @input_buffer.put_array_of_uint8(0,data)
         elsif data.kind_of?(String)
-          @input_buffer.put_bytes(0,data)
+          @input_buffer.put_bytes(0,data.encode(Encoding::ASCII_8BIT))
         else
           raise(RuntimeError,"input buffer must be either a String or an Array of bytes",caller)
         end
