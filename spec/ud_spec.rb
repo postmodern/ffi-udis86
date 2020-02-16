@@ -11,28 +11,28 @@ describe UD do
   describe "create" do
     it "should accept a :mode option" do
       ud = UD.create(:mode => 16)
-      ud.mode.should == 16
+      expect(ud.mode).to be == 16
     end
 
     it "should accept a :syntax option" do
-      lambda {
+      expect {
         UD.create(:syntax => :att)
-      }.should_not raise_error(ArgumentError)
+      }.to raise_error(ArgumentError)
     end
 
     it "should accept a :vendor option" do
       ud = UD.create(:vendor => :amd)
-      ud.vendor.should == :amd
+      expect(ud.vendor).to be(:amd)
     end
 
     it "should accept a :pc option" do
       ud = UD.create(:pc => 0x400000)
-      ud.pc.should == 0x400000
+      expect(ud.pc).to be(0x400000)
     end
 
     it "should accept a :buffer option" do
       ud = UD.create(:buffer => "\x90\x90\x90")
-      ud.input_buffer.should == "\x90\x90\x90"
+      expect(ud.input_buffer).to be == "\x90\x90\x90"
     end
 
     it "should accept a block as an input callback" do
@@ -40,10 +40,10 @@ describe UD do
 
       ud = UD.create { |ud| bytes.shift }
 
-      ud.next_insn.should == 1
-      ud.to_hex.should == '80'
+      expect(ud.next_insn).to be(1)
+      expect(ud.to_hex).to be == '80'
 
-      ud.next_insn.should == 0
+      expect(ud.next_insn).to be(0)
     end
   end
 
@@ -52,16 +52,16 @@ describe UD do
 
     it "should be able to open files" do
       UD.open(File.join(Helpers::FILES_DIR,'simple')) do |ud|
-        ud.next_insn.should == 1
-        ud.to_hex.should == hex[0]
+        expect(ud.next_insn).to be(1)
+        expect(ud.to_hex).to be == hex[0]
 
-        ud.next_insn.should == 1
-        ud.to_hex.should == hex[1]
+        expect(ud.next_insn).to be(1)
+        expect(ud.to_hex).to be == hex[1]
 
-        ud.next_insn.should == 1
-        ud.to_hex.should == hex[2]
+        expect(ud.next_insn).to be(1)
+        expect(ud.to_hex).to be == hex[2]
 
-        ud.next_insn.should == 0
+        expect(ud.next_insn).to be(0)
       end
     end
   end
@@ -81,15 +81,15 @@ describe UD do
       it "should allow setting the mode" do
         @ud.mode = 64
 
-        @ud.mode.should == 64
+        expect(@ud.mode).to be(64)
       end
     end
 
     describe "#syntax=" do
       it "should allow setting the syntax" do
-        lambda {
+        expect {
           @ud.syntax = :att
-        }.should_not raise_error(RuntimeError)
+        }.to raise_error(RuntimeError)
       end
     end
 
@@ -97,7 +97,7 @@ describe UD do
       it "should allow setting the vendor" do
         @ud.vendor = :amd
 
-        @ud.vendor.should == :amd
+        expect(@ud.vendor).to be(:amd)
       end
     end
 
@@ -105,13 +105,13 @@ describe UD do
       it "should allow setting the program counter (PC)" do
         @ud.pc = 0x400000
 
-        @ud.pc.should == 0x400000
+        expect(@ud.pc).to be(0x400000)
       end
     end
 
     describe "#input_buffer" do
       it "should provide read access to the input buffer" do
-        @ud.input_buffer.should == @string
+        expect(@ud.input_buffer).to be == @string
       end
     end
 
@@ -121,7 +121,7 @@ describe UD do
       it "should allow setting the input buffer" do
         @ud.input_buffer = buffer
 
-        @ud.input_buffer.should == buffer
+        expect(@ud.input_buffer).to be == buffer
       end
 
       context "when given an Array of bytes" do
@@ -130,7 +130,7 @@ describe UD do
         it "should convert them to an input buffer" do
           @ud.input_buffer = array
 
-          @ud.input_buffer.should == buffer
+          expect(@ud.input_buffer).to be == buffer
         end
       end
     end
@@ -143,96 +143,96 @@ describe UD do
           bytes.shift || -1
         end
 
-        @ud.next_insn.should == 1
-        @ud.to_asm.should == 'nop '
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.to_asm).to be == 'nop '
 
-        @ud.next_insn.should == 1
-        @ud.to_asm.should == 'ret '
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.to_asm).to be == 'ret '
 
-        @ud.next_insn.should == 0
+        expect(@ud.next_insn).to be(0)
       end
     end
 
     describe "#skip" do
       it "should allow the skipping of input bytes" do
         @ud.skip(2)
-
         @ud.next_insn
-        @ud.to_asm.should == ops.last
+
+        expect(@ud.to_asm).to be == ops.last
       end
     end
 
     describe "#next_insn" do
       it "should get the next instruction" do
-        @ud.next_insn.should == 1
-        @ud.to_asm.should == ops[0]
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.to_asm).to be == ops[0]
 
-        @ud.next_insn.should == 1
-        @ud.to_asm.should == ops[1]
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.to_asm).to be == ops[1]
 
-        @ud.next_insn.should == 1
-        @ud.to_asm.should == ops[2]
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.to_asm).to be == ops[2]
 
-        @ud.next_insn.should == 0
+        expect(@ud.next_insn).to be(0)
       end
     end
 
     describe "#insn_length" do
       it "should specify the instruction length" do
-        @ud.next_insn.should == 1
-        @ud.insn_length.should == 1
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.insn_length).to be(1)
       end
     end
 
     describe "#insn_offset" do
       it "should specify the instruction offset" do
-        @ud.next_insn.should == 1
-        @ud.next_insn.should == 1
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.next_insn).to be(1)
 
-        @ud.insn_offset.should == 1
+        expect(@ud.insn_offset).to be(1)
       end
     end
 
     describe "#insn_ptr" do
       it "should provide a pointer to the instruction bytes" do
-        @ud.next_insn.should == 1
+        expect(@ud.next_insn).to be(1)
 
-        @ud.insn_ptr.get_string(0).should == "\x90"
+        expect(@ud.insn_ptr.get_string(0)).to be == "\x90"
       end
     end
 
     describe "#to_hex" do
       it "should provide hex form of the bytes" do
-        @ud.next_insn.should == 1
-        @ud.to_hex.should == hex.first
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.to_hex).to be == hex.first
       end
     end
 
     describe "#mnemonic_code" do
       it "should provide the mnemonic code of the disassembled instructions" do
-        @ud.next_insn.should == 1
-        @ud.mnemonic_code.should == :ud_inop
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.mnemonic_code).to be(:ud_inop)
       end
     end
 
     describe "#mnemonic" do
       it "should provide the mnemonic of the disassembled instructions" do
-        @ud.next_insn.should == 1
-        @ud.mnemonic.should == :nop
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.mnemonic).to be(:nop)
       end
     end
 
     describe "#to_asm" do
       it "should provide the assembly form of the disassembled instructions" do
-        @ud.next_insn.should == 1
-        @ud.to_asm.should == ops[0]
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.to_asm).to be == ops[0]
       end
     end
 
     describe "#operands" do
       it "should provide the disassembled operands of the instruction" do
-        @ud.next_insn.should == 1
-        @ud.operands.should == []
+        expect(@ud.next_insn).to be(1)
+        expect(@ud.operands).to be == []
       end
     end
 
@@ -242,7 +242,7 @@ describe UD do
 
         @ud.disassemble { |ud| disassembled << ud.to_asm }
 
-        disassembled.should == ops
+        expect(disassembled).to be == ops
       end
     end
   end
