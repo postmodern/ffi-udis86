@@ -4,6 +4,11 @@ tmp/*
 .DS_Store
 .yardoc
 /Gemfile.lock
+/spec/fixtures/operands_index_scale
+/spec/fixtures/operands_memory
+/spec/fixtures/operands_offset
+/spec/fixtures/operands_simple
+/spec/fixtures/simple
 *.o
 *.swp
 *~
