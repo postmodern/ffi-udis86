@@ -3,6 +3,7 @@ pkg
 tmp/*
 .DS_Store
 .yardoc
+/Gemfile.lock
 *.o
 *.swp
 *~
