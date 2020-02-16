@@ -1,79 +1,75 @@
 # encoding: US-ASCII
+require 'spec_helper'
 
 require 'ffi/udis86/ud'
 
-require 'spec_helper'
-require 'helpers/files'
-
-describe UD do
-  include Helpers
-
-  describe "create" do
+describe FFI::UDis86::UD do
+  describe ".create" do
     it "should accept a :mode option" do
-      ud = UD.create(:mode => 16)
+      ud = described_class.create(:mode => 16)
       expect(ud.mode).to be == 16
     end
 
     it "should accept a :syntax option" do
       expect {
-        UD.create(:syntax => :att)
+        described_class.create(:syntax => :att)
       }.to raise_error(ArgumentError)
     end
 
     it "should accept a :vendor option" do
-      ud = UD.create(:vendor => :amd)
+      ud = described_class.create(:vendor => :amd)
       expect(ud.vendor).to be(:amd)
     end
 
     it "should accept a :pc option" do
-      ud = UD.create(:pc => 0x400000)
-      expect(ud.pc).to be(0x400000)
+      ud = described_class.create(:pc => 0x400000)
+      expect(ud.pc).to be == 0x400000
     end
 
     it "should accept a :buffer option" do
-      ud = UD.create(:buffer => "\x90\x90\x90")
+      ud = described_class.create(:buffer => "\x90\x90\x90")
       expect(ud.input_buffer).to be == "\x90\x90\x90"
     end
 
     it "should accept a block as an input callback" do
       bytes = [0x80, -1]
 
-      ud = UD.create { |ud| bytes.shift }
+      ud = described_class.create { |ud| bytes.shift }
 
-      expect(ud.next_insn).to be(1)
+      expect(ud.next_insn).to be == 1
       expect(ud.to_hex).to be == '80'
 
-      expect(ud.next_insn).to be(0)
+      expect(ud.next_insn).to be == 0
     end
   end
 
-  describe "open" do
-    let(:hex) { ['90', '90', 'c3'] }
+  describe ".open" do
+    let(:hex) { %w[90 90 c3] }
 
     it "should be able to open files" do
-      UD.open(File.join(Helpers::FILES_DIR,'simple')) do |ud|
-        expect(ud.next_insn).to be(1)
+      described_class.open(fixture_path('simple')) do |ud|
+        expect(ud.next_insn).to be == 1
         expect(ud.to_hex).to be == hex[0]
 
-        expect(ud.next_insn).to be(1)
+        expect(ud.next_insn).to be == 1
         expect(ud.to_hex).to be == hex[1]
 
-        expect(ud.next_insn).to be(1)
+        expect(ud.next_insn).to be == 1
         expect(ud.to_hex).to be == hex[2]
 
-        expect(ud.next_insn).to be(0)
+        expect(ud.next_insn).to be == 0
       end
     end
   end
 
   describe "disassember" do
-    let(:hex) { ['90', '90', 'c3'] }
-    let(:ops) { ['nop ', 'nop ', 'ret '] }
+    let(:hex) { %w[90 90 c3] }
+    let(:ops) { %w[nop nop ret] }
 
     before(:each) do
-      File.open(File.join(Helpers::FILES_DIR,'simple'),'rb') do |file|
+      File.open(fixture_path('simple'),'rb') do |file|
         @string = file.read
-        @ud = UD.create(:buffer => @string)
+        @ud     = described_class.create(:buffer => @string)
       end
     end
 
@@ -81,7 +77,7 @@ describe UD do
       it "should allow setting the mode" do
         @ud.mode = 64
 
-        expect(@ud.mode).to be(64)
+        expect(@ud.mode).to be == 64
       end
     end
 
@@ -105,7 +101,7 @@ describe UD do
       it "should allow setting the program counter (PC)" do
         @ud.pc = 0x400000
 
-        expect(@ud.pc).to be(0x400000)
+        expect(@ud.pc).to be == 0x400000
       end
     end
 
@@ -143,13 +139,13 @@ describe UD do
           bytes.shift || -1
         end
 
-        expect(@ud.next_insn).to be(1)
-        expect(@ud.to_asm).to be == 'nop '
+        expect(@ud.next_insn).to be == 1
+        expect(@ud.to_asm).to be == 'nop'
 
-        expect(@ud.next_insn).to be(1)
-        expect(@ud.to_asm).to be == 'ret '
+        expect(@ud.next_insn).to be == 1
+        expect(@ud.to_asm).to be == 'ret'
 
-        expect(@ud.next_insn).to be(0)
+        expect(@ud.next_insn).to be == 0
       end
     end
 
@@ -164,38 +160,38 @@ describe UD do
 
     describe "#next_insn" do
       it "should get the next instruction" do
-        expect(@ud.next_insn).to be(1)
+        expect(@ud.next_insn).to be == 1
         expect(@ud.to_asm).to be == ops[0]
 
-        expect(@ud.next_insn).to be(1)
+        expect(@ud.next_insn).to be == 1
         expect(@ud.to_asm).to be == ops[1]
 
-        expect(@ud.next_insn).to be(1)
+        expect(@ud.next_insn).to be == 1
         expect(@ud.to_asm).to be == ops[2]
 
-        expect(@ud.next_insn).to be(0)
+        expect(@ud.next_insn).to be == 0
       end
     end
 
     describe "#insn_length" do
       it "should specify the instruction length" do
-        expect(@ud.next_insn).to be(1)
-        expect(@ud.insn_length).to be(1)
+        expect(@ud.next_insn).to be == 1
+        expect(@ud.insn_length).to be == 1
       end
     end
 
     describe "#insn_offset" do
       it "should specify the instruction offset" do
-        expect(@ud.next_insn).to be(1)
-        expect(@ud.next_insn).to be(1)
+        expect(@ud.next_insn).to be == 1
+        expect(@ud.next_insn).to be == 1
 
-        expect(@ud.insn_offset).to be(1)
+        expect(@ud.insn_offset).to be == 1
       end
     end
 
     describe "#insn_ptr" do
       it "should provide a pointer to the instruction bytes" do
-        expect(@ud.next_insn).to be(1)
+        expect(@ud.next_insn).to be == 1
 
         expect(@ud.insn_ptr.get_string(0)).to be == "\x90"
       end
@@ -203,35 +199,35 @@ describe UD do
 
     describe "#to_hex" do
       it "should provide hex form of the bytes" do
-        expect(@ud.next_insn).to be(1)
+        expect(@ud.next_insn).to be == 1
         expect(@ud.to_hex).to be == hex.first
       end
     end
 
     describe "#mnemonic_code" do
       it "should provide the mnemonic code of the disassembled instructions" do
-        expect(@ud.next_insn).to be(1)
+        expect(@ud.next_insn).to be == 1
         expect(@ud.mnemonic_code).to be(:ud_inop)
       end
     end
 
     describe "#mnemonic" do
       it "should provide the mnemonic of the disassembled instructions" do
-        expect(@ud.next_insn).to be(1)
+        expect(@ud.next_insn).to be == 1
         expect(@ud.mnemonic).to be(:nop)
       end
     end
 
     describe "#to_asm" do
       it "should provide the assembly form of the disassembled instructions" do
-        expect(@ud.next_insn).to be(1)
+        expect(@ud.next_insn).to be == 1
         expect(@ud.to_asm).to be == ops[0]
       end
     end
 
     describe "#operands" do
       it "should provide the disassembled operands of the instruction" do
-        expect(@ud.next_insn).to be(1)
+        expect(@ud.next_insn).to be == 1
         expect(@ud.operands).to be == []
       end
     end

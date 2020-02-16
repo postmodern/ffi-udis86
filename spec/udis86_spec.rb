@@ -1,6 +1,6 @@
-require 'ffi/udis86/version'
-
 require 'spec_helper'
+
+require 'ffi/udis86/version'
 
 describe UDis86 do
   it "should have a VERSION constant" do
@@ -9,8 +9,8 @@ describe UDis86 do
 
   describe "types" do
     it "should define syntices" do
-      expect(SYNTAX[:att]).to eq(:ud_translate_att)
-      expect(SYNTAX[:intel]).to eq(:ud_translate_intel)
+      expect(described_class::SYNTAX[:att]).to eq(:ud_translate_att)
+      expect(described_class::SYNTAX[:intel]).to eq(:ud_translate_intel)
     end
 
     it "should define mappings from :ud_type to register names" do
