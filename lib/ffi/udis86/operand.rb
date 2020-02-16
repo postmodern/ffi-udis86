@@ -8,12 +8,14 @@ module FFI
     class Operand < FFI::Struct
 
       layout :type, :ud_type,
-             :size, :uint8,
-             :value, OperandValue,
+             :size, :uint16,
              :base, :ud_type,
              :index, :ud_type,
+             :scale, :uint8,
              :offset, :uint8,
-             :scale, :uint8
+             :value, OperandValue,
+             :_legacy, :uint16, # this will be removed in libudis86 1.8
+             :_oprcode, :uint8
 
       #
       # The type of the operand.
