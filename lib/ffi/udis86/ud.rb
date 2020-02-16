@@ -360,9 +360,13 @@ module FFI
       # @return [Symbol]
       #   The mnemonic code.
       #
-      def mnemonic_code
-        self[:mnemonic]
+      # @since 0.2.0
+      #
+      def insn_mnemonic
+        UDis86.ud_insn_mnemonic(self)
       end
+
+      alias mnemonic_code insn_mnemonic
 
       #
       # The mnemonic string of the last disassembled instruction.
@@ -529,6 +533,24 @@ module FFI
       #
       def insn_ptr
         UDis86.ud_insn_ptr(self)
+      end
+
+      #
+      # Returns the operand at the nth (starting with 0) position of the
+      # instruction.
+      #
+      # @param [Integer] index
+      #   The given index to check.
+      #
+      # @return [Operand, nil]
+      #   The operand at the given index, or `nil` if the index is out of range.
+      #
+      # @since 0.2.0
+      #
+      def insn_opr(index=0)
+        unless (ptr = UDis86.ud_insn_opr(self,index)).null?
+          Operand.new(ptr)
+        end
       end
 
       #
