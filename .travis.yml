@@ -3,8 +3,9 @@ before_install:
   - sudo apt-get install udis86-dev yasm
   - gem install ffi rubygems-tasks rspec yard
 rvm:
-  - 1.9.3
-  - 2.0.0
+  - 2.5
+  - 2.6
+  - 2.7
   - rbx-18mode
   - rbx-19mode
 matrix:

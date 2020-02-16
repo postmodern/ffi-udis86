@@ -88,10 +88,8 @@ Disassemble and print information about the instruction and operands:
 
 ## Requirements
 
-* [Ruby](http://ruby-lang.org/) >= 1.8.7 or
+* [Ruby](http://ruby-lang.org/) >= 2.0.0 or
   [JRruby](http://jruby.org) >= 1.6
-  * [Rubinius](http://rubini.us/) is not currently supported due to
-    [Issue 1717](https://github.com/rubinius/rubinius/issues/1717)
 * [udis86](http://udis86.sourceforge.net/) >= 1.7
 * [ffi](http://github.com/ffi/ffi) ~> 1.0
 
