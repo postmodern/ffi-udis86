@@ -13,7 +13,7 @@ describe FFI::UDis86::UD do
     it "should accept a :syntax option" do
       expect {
         described_class.create(:syntax => :att)
-      }.to raise_error(ArgumentError)
+      }.to_not raise_error(ArgumentError)
     end
 
     it "should accept a :vendor option" do
@@ -85,7 +85,7 @@ describe FFI::UDis86::UD do
       it "should allow setting the syntax" do
         expect {
           @ud.syntax = :att
-        }.to raise_error(RuntimeError)
+        }.to_not raise_error(ArgumentError)
       end
     end
 
