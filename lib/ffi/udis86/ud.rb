@@ -64,7 +64,7 @@ module FFI
       # @param [Hash] options
       #   Additional options.
       #
-      # @option options [Integer] :mode (32)
+      # @option options [Integer] :mode (64)
       #   The mode of disassembly, can either 16, 32 or 64.
       #
       # @option options [Integer] :syntax (:intel)
@@ -96,7 +96,7 @@ module FFI
         ud = self.new
         ud.init
 
-        ud.mode = (options[:mode] || 32)
+        ud.mode = (options[:mode] || 64)
 
         if options[:buffer]
           ud.input_buffer = options[:buffer]
