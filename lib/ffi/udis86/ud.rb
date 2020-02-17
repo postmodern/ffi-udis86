@@ -17,7 +17,7 @@ module FFI
              :inp_buf_index, :size_t,
              :inp_curr, :uint8,
              :inp_ctr, :size_t,
-             :inp_sess, [NativeType::UINT8, 64],
+             :inp_sess, [:uint8, 64],
              :inp_end, :int,
              :inp_peek, :int,
              :translator, :ud_translator_callback,
