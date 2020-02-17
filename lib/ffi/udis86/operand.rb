@@ -14,7 +14,7 @@ module FFI
              :scale, :uint8,
              :offset, :uint8,
              :value, OperandValue,
-             :_legacy, :uint16, # this will be removed in libudis86 1.8
+             :_legacy, :uint64, # this will be removed in libudis86 1.8
              :_oprcode, :uint8
 
       #
