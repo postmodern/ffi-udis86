@@ -355,6 +355,18 @@ module FFI
       end
 
       #
+      # Tests for the end of input. You can use this function to test if the
+      # input has been exhausted.
+      #
+      # @return [Boolean]
+      #
+      # @since 0.2.0
+      #
+      def end?
+        UDis86.ud_input_end(self) > 0
+      end
+
+      #
       # The mnemonic code of the last disassembled instruction.
       #
       # @return [Symbol]
