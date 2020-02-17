@@ -1,5 +1,4 @@
 require 'ffi/udis86/types'
-require 'ffi/udis86/ud'
 
 require 'ffi'
 
@@ -14,6 +13,7 @@ module FFI
     attach_function :ud_set_pc, [:pointer, :uint64], :void
     attach_function :ud_set_input_hook, [:pointer, :ud_input_callback], :void
     attach_function :ud_set_input_buffer, [:pointer, :pointer, :size_t], :void
+    attach_function :ud_set_input_file, [:pointer, :pointer], :void
     attach_function :ud_set_vendor, [:pointer, :uint8], :void
     attach_function :ud_set_syntax, [:pointer, :ud_translator_callback], :void
     attach_function :ud_input_skip, [:pointer, :size_t], :void
