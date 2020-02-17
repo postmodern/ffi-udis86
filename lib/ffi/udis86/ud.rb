@@ -50,6 +50,7 @@ module FFI
              :br_near, :uint8,
              :have_modrm, :uint8,
              :modrm, :uint8,
+             :modrn_offset, :uint8,
              :vex_op, :uint8,
              :vex_b1, :uint8,
              :vex_b2, :uint8,
