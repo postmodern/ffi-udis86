@@ -17,7 +17,7 @@ module FFI
     attach_function :ud_set_vendor, [:pointer, :uint8], :void
     attach_function :ud_set_syntax, [:pointer, :ud_translator_callback], :void
     attach_function :ud_input_skip, [:pointer, :size_t], :void
-    attach_function :ud_input_end, [:pointer], :void
+    attach_function :ud_input_end, [:pointer], :int
     attach_function :ud_decode, [:pointer], :uint
     attach_function :ud_disassemble, [:pointer], :uint
     attach_function :ud_translate_intel, [:pointer], :void
