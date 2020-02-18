@@ -175,6 +175,9 @@ module FFI
       #
       def init
         UDis86.ud_init(self)
+
+        @input_buffer = nil
+        @input_callback = nil
         return self
       end
 
@@ -266,6 +269,11 @@ module FFI
 
         UDis86.ud_set_mode(self,new_mode)
         return new_mode
+      end
+
+      def syntax
+        unless self[:translator].null?
+        end
       end
 
       #
