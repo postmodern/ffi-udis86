@@ -358,10 +358,12 @@ module FFI
       # @return [UD]
       #   The disassembler.
       #
-      def skip(n)
+      def input_skip(n)
         UDis86.ud_input_skip(self,n)
         return self
       end
+
+      alias skip input_skip
 
       #
       # Tests for the end of input. You can use this function to test if the
@@ -371,9 +373,11 @@ module FFI
       #
       # @since 0.2.0
       #
-      def end?
+      def input_end?
         UDis86.ud_input_end(self) > 0
       end
+
+      alias end? input_end?
 
       #
       # The mnemonic code of the last disassembled instruction.
