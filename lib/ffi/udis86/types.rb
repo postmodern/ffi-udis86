@@ -745,12 +745,6 @@ module FFI
       :ud_op_jimm, :ud_op_const
     ]
 
-    # Syntaxes
-    SYNTAX = {
-      :att => :ud_translate_att,
-      :intel => :ud_translate_intel
-    }
-
     callback :ud_input_callback, [:pointer], :int
     callback :ud_sym_resolver_callback, [:pointer, :uint64, :pointer], :string
     callback :ud_translator_callback, [:pointer], :void

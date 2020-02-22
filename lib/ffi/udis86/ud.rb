@@ -276,6 +276,12 @@ module FFI
         end
       end
 
+      # Syntaxes
+      SYNTAX = {
+        :att => :ud_translate_att,
+        :intel => :ud_translate_intel
+      }
+
       #
       # Sets the assembly syntax that the disassembler will emit.
       #
@@ -288,7 +294,7 @@ module FFI
       #
       def syntax=(new_syntax)
         new_syntax = new_syntax.to_s.downcase.to_sym
-        func_name = UDis86::SYNTAX[new_syntax]
+        func_name = SYNTAX[new_syntax]
 
         unless func_name
           raise(ArgumentError,"unknown syntax name #{new_syntax}",caller)

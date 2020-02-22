@@ -81,6 +81,13 @@ describe FFI::UDis86::UD do
       end
     end
 
+    describe "REGS" do
+      it "should define syntices" do
+        expect(described_class::SYNTAX[:att]).to eq(:ud_translate_att)
+        expect(described_class::SYNTAX[:intel]).to eq(:ud_translate_intel)
+      end
+    end
+
     describe "#syntax=" do
       it "should allow setting the syntax" do
         expect {
