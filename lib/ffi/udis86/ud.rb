@@ -153,11 +153,9 @@ module FFI
       #
       def self.open(path,options={})
         File.open(path,'rb') do |file|
-          ud = self.create(options) do |ud|
-            if (b = file.getc)
-              b.ord
-            else
-              -1
+          ud = create(options) do |ud|
+            if (b = file.getc) then b.ord
+            else                    -1
             end
           end
 
