@@ -512,6 +512,12 @@ module FFI
 
       alias to_s to_asm
 
+      # Acceptable operand types
+      OPERAND_TYPES = Set[
+        :ud_op_reg,  :ud_op_mem,  :ud_op_ptr,  :ud_op_imm,
+        :ud_op_jimm, :ud_op_const
+      ]
+
       #
       # Returns the operands for the last disassembled instruction.
       #

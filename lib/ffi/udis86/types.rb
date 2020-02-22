@@ -739,12 +739,6 @@ module FFI
       :ud_op_jimm, :ud_op_const
     ]
 
-    # Acceptable operand types
-    OPERAND_TYPES = Set[
-      :ud_op_reg,  :ud_op_mem,  :ud_op_ptr,  :ud_op_imm,
-      :ud_op_jimm, :ud_op_const
-    ]
-
     callback :ud_input_callback, [:pointer], :int
     callback :ud_sym_resolver_callback, [:pointer, :uint64, :pointer], :string
     callback :ud_translator_callback, [:pointer], :void
