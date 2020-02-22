@@ -7,8 +7,8 @@
 
 ## Description
 
-{FFI::UDis86} provides Ruby FFI bindings for the udis86, a x86 and x86-64
-disassembler.
+{FFI::UDis86} provides Ruby FFI bindings for the [libudis86] library, a x86 and
+x86-64 disassembler.
 
 ## Features
 
@@ -100,3 +100,5 @@ Disassemble and print information about the instruction and operands:
 ## License
 
 See {file:LICENSE.txt} for license information.
+
+[libudis86]: http://udis86.sourceforge.net/
