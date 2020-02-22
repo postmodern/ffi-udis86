@@ -106,12 +106,9 @@ module FFI
       #
       def value
         case type
-        when :ud_op_ptr
-          return self[:value].ptr
-        when :ud_op_reg
-          return nil
-        else
-          return self[:value]
+        when :ud_op_reg then nil
+        when :ud_op_ptr then self[:value].ptr
+        else                 self[:value]
         end
       end
 
@@ -144,10 +141,8 @@ module FFI
       #   The offset value of the operand.
       #
       def offset
-        if self[:offset] > 0
-          return self[:value]
-        else
-          return 0
+        if self[:offset] > 0 then self[:value]
+        else                      0
         end
       end
 
