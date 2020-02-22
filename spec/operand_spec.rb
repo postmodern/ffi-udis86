@@ -4,6 +4,17 @@ require 'ffi/udis86/operand'
 require 'ffi/udis86/ud'
 
 describe FFI::UDis86::Operand do
+  describe "REGS" do
+    it "should define mappings from :ud_type to register names" do
+      ud_type = FFI::UDis86.enum_type(:ud_type)
+
+      described_class::REGS.each do |type,name|
+        expect(:"ud_r_#{name}").to eq(type)
+        expect(ud_type[ud_type[type]]).to eq(type)
+      end
+    end
+  end
+
   it "should provide the type of the operand" do
     operands = ud_operands('operands_simple')
 
