@@ -36,7 +36,7 @@ Add an input callback:
 
     ud.input_callback { |ud| ops.shift || -1 }
 
-Read a file:
+Read from a file:
 
     UD.open(path) do |ud|
       ...
