@@ -97,6 +97,13 @@ Disassemble and print information about the instruction and operands:
 
     $ sudo gem install ffi-udis86
 
+## Crystal
+
+[udis86.cr] is a [Crystal][crystal-lang] port of this library.
+
+[udis86.cr]: https://github.com/postmodern/udis86.cr#readme
+[crystal-lang]: https://www.crystal-lang.org/
+
 ## License
 
 See {file:LICENSE.txt} for license information.
