@@ -1,4 +1,5 @@
 require 'ffi'
+require 'set'
 
 module FFI
   module UDis86
