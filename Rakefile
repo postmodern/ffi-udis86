@@ -13,12 +13,23 @@ Dir['spec/fixtures/*.s'].each do |asm|
   bin = asm.chomp('.s')
 
   file bin => asm do |t|
-    sh "yasm -f bin -m amd64 -o #{t.name} -p gas #{t.prerequisites.first}"
+    sh "yasm -f bin -a x86 -m x86 -o #{t.name} -p gas #{t.prerequisites.first}"
   end
 
   task 'spec:fixtures' => bin
 end
 task :spec => 'spec:fixtures'
+
+require 'rake/clean'
+CLEAN.include(
+  %w[
+      spec/fixtures/operands_index_scale
+      spec/fixtures/operands_memory
+      spec/fixtures/operands_offset
+      spec/fixtures/operands_simple
+      spec/fixtures/simple
+  ]
+)
 
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new
