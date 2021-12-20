@@ -88,7 +88,7 @@ Disassemble and print information about the instruction and operands:
 
 ## Requirements
 
-* [Ruby](https://ruby-lang.org/) >= 2.0.0 or
+* [Ruby](https://www.ruby-lang.org/) >= 2.0.0 or
   [JRruby](https://jruby.org) >= 1.6
 * [udis86](https://udis86.sourceforge.net/) >= 1.7.2
 * [ffi](https://github.com/ffi/ffi) ~> 1.0
