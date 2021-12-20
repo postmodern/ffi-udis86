@@ -1,8 +1,8 @@
 # ffi-udis86
 
-* [Source](http://github.com/postmodern/ffi-udis86/)
-* [Issue](http://github.com/postmodern/ffi-udis86/)
-* [Documentation](http://rubydoc.info/gems/ffi-udis86/)
+* [Source](https://github.com/postmodern/ffi-udis86/)
+* [Issue](https://github.com/postmodern/ffi-udis86/)
+* [Documentation](https://rubydoc.info/gems/ffi-udis86/)
 * [Email](postmodern.mod3 at gmail.com)
 
 ## Description
@@ -88,10 +88,10 @@ Disassemble and print information about the instruction and operands:
 
 ## Requirements
 
-* [Ruby](http://ruby-lang.org/) >= 2.0.0 or
-  [JRruby](http://jruby.org) >= 1.6
-* [udis86](http://udis86.sourceforge.net/) >= 1.7.2
-* [ffi](http://github.com/ffi/ffi) ~> 1.0
+* [Ruby](https://ruby-lang.org/) >= 2.0.0 or
+  [JRruby](https://jruby.org) >= 1.6
+* [udis86](https://udis86.sourceforge.net/) >= 1.7.2
+* [ffi](https://github.com/ffi/ffi) ~> 1.0
 
 ## Install
 
@@ -108,4 +108,4 @@ Disassemble and print information about the instruction and operands:
 
 See {file:LICENSE.txt} for license information.
 
-[libudis86]: http://udis86.sourceforge.net/
+[libudis86]: https://udis86.sourceforge.net/
