@@ -1,7 +1,7 @@
 # ffi-udis86
 
-* [Source](http://github.com/sophsec/ffi-udis86/)
-* [Issue](http://github.com/sophsec/ffi-udis86/)
+* [Source](http://github.com/postmodern/ffi-udis86/)
+* [Issue](http://github.com/postmodern/ffi-udis86/)
 * [Documentation](http://rubydoc.info/gems/ffi-udis86/)
 * [Email](postmodern.mod3 at gmail.com)
 
