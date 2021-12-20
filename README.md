@@ -3,7 +3,6 @@
 * [Source](https://github.com/postmodern/ffi-udis86/)
 * [Issue](https://github.com/postmodern/ffi-udis86/)
 * [Documentation](https://rubydoc.info/gems/ffi-udis86/)
-* [Email](postmodern.mod3 at gmail.com)
 
 ## Description
 
