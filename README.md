@@ -90,7 +90,7 @@ Disassemble and print information about the instruction and operands:
 * [Ruby](https://www.ruby-lang.org/) >= 2.0.0 or
   [JRruby](https://jruby.org) >= 1.6
 * [udis86] >= 1.7.2
-* [ffi](https://github.com/ffi/ffi) ~> 1.0
+* [ffi](https://github.com/ffi/ffi#readme) ~> 1.0
 
 ## Install
 
