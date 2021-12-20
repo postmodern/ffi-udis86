@@ -2,12 +2,11 @@
 
 * Require ffi ~> 1.0.
 * Load `libudis86.so.0` if `libudis86.so` does not exist.
-* Temporarily drop support for [Rubinius](http://rubini.us/) due to [missing
-  FFI::Union](https://github.com/rubinius/rubinius/issues/1717).
+* Temporarily drop support for Rubinius due to [missing FFI::Union](https://github.com/rubinius/rubinius/issues/1717).
 
 ### 0.1.2 / 2011-02-02
 
-* Opted into [gem-tester.org](http://gem-testers.org/).
+* Opted into gem-tester.org.
 * Require ffi >= 0.6.0 and <= 1.1.0.
   * JRuby requires ffi >= 1.0.0.
   * A lot of projects still require ~> 0.6.0.
